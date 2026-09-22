@@ -254,6 +254,12 @@ body .home-mainbanner .video-element .desktop-video{position:absolute;} */
   animation-play-state: paused;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee .marquee__content {
+    animation: none;
+  }
+}
+
 @media (max-width: 1199px) {
   .marquee-wrapper{padding: 20px 0;}
   .marquee .marquee__content .marquee-logo{width: 145px;}

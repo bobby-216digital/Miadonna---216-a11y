@@ -376,7 +376,7 @@ window.LB_GROWN_DIAMOND = function () {
                             fancyValues =  window.LB_GROWN_DIAMOND.config?.fancyValues.toLowerCase();
                             var fancySvgURL = `https://www.miadonna.com/cdn/shop/t/495/assets/icon-fancy-${fancyValues}.svg`;
                          
-                            fancyHTMLSelected = `<span class="fancy-svg active"><img src="${fancySvgURL}"></span>`;
+                            fancyHTMLSelected = `<span class="fancy-svg active"><img src="${fancySvgURL}" alt="${fancyValues}"></span>`;
                         }
                           updateSelectFilterText({
                                         mainId: ".fancy-filter-selected",
@@ -458,7 +458,7 @@ window.LB_GROWN_DIAMOND = function () {
                                                 shapesvgURL= shapeName
                                                 ? `/apps/vdb-maidonna-inventory-app/public/icons/icon-shape-${window.LB_GROWN_DIAMOND.handleize(shapeName)}-cut.svg`
                                                 : '/apps/vdb-maidonna-inventory-app/images/no-image.png';
-                                                shapesvgURLHTML +=`<span class="shap-svg"> <img src="${shapesvgURL}" /></span>`;  
+                                                shapesvgURLHTML +=`<span class="shap-svg"> <img src="${shapesvgURL}" alt="${shapeName}" /></span>`;
                                                 count++;
                                             }
                                         }
@@ -830,7 +830,7 @@ window.LB_GROWN_DIAMOND = function () {
                                             <header>
                                             <h2 id="filter-title">${diamondsArray?.title}</h2>
                                             <button type="close" class="icon-close filter-mobile-view-close dmd-detail-filter-close"
-                                                aria-lable="close Filter">
+                                                aria-label="close Filter">
                                                 <svg width="16" height="16" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M16.6523 17.9551L9.17578 10.4219L1.64258 17.9551C1.30273 18.2949 0.736328 18.2949 0.339844 17.9551C0 17.5586 0 16.9922 0.339844 16.6523L7.87305 9.11914L0.396484 1.64258C0 1.30273 0 0.736328 0.396484 0.339844C0.736328 0 1.30273 0 1.64258 0.339844L9.17578 7.87305L16.6523 0.339844C16.9922 0 17.5586 0 17.9551 0.339844C18.2949 0.736328 18.2949 1.30273 17.9551 1.64258L10.4219 9.11914L17.9551 16.6523C18.2949 16.9922 18.2949 17.5586 17.9551 17.9551C17.5586 18.2949 16.9922 18.2949 16.6523 17.9551Z" fill="#001514"/>
                                                 </svg>

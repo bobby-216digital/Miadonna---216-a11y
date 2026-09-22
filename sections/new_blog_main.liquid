@@ -41,9 +41,11 @@
         is-width-{{ width }}"
         {% if animation != "none" %}
           data-scroll-class="{{ animation }}"
-        {% endif %} role="region" aria-labelledby="latest-stories-heading">
+        {% endif %}{% if section.settings.heading != blank %} role="region" aria-labelledby="latest-stories-heading"{% endif %}>
   <div class="contanier-nw">
-    <h2 class="blog-subtitle" id="latest-stories-heading"> {{ section.settings.heading }}</h2>
+    {% if section.settings.heading != blank %}
+      <h2 class="blog-subtitle" id="latest-stories-heading"> {{ section.settings.heading }}</h2>
+    {% endif %}
 
     {% if section.blocks.size > 0 and section.settings.show_sidebar %}
       <aside class="sidebar-section

@@ -858,6 +858,8 @@
                               >
                                 <tc-range-slider
                                   id="mobile_faceted_price_slider"
+                                  aria-label1="Minimum price"
+                                  aria-label2="Maximum price"
                                   min="{{ lowestProductValue | replace: ',', '' }}"
                                   max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
                                   {% if filter.min_value.value -%}
@@ -1043,7 +1045,7 @@
               </div>
               <div class="filter__list-icon">
                 <input type="checkbox" hidden="hidden" id="ready-to-shop"{% if current_tags contains 'Ready To Ship' %} checked{% endif %}>
-                <label class="switch" for="ready-to-shop"></label>
+                <label class="switch" for="ready-to-shop"><span class="visually-hidden">Ready-To-Ship</span></label>
               </div>
             </div>
           </li>

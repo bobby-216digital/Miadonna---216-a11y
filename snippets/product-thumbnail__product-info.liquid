@@ -165,7 +165,7 @@
             {%- if show_carat == 'No' -%}{% break %}{%- endif -%}
             {%- assign is_carat_added = true -%}
             <div class="prd-caret-text">
-                <div class="shape-filter-label" aria-label="Carat weight filter">
+                <div class="shape-filter-label">
                     <span class="shape-label">{{ option.name | remove:'Weight' | escape }}:</span>
                     {% for value in option.values %}
                         <span class="shape-value">{% if forloop.first %}{{ value | remove:'.0' | remove:'ctw' | remove:'ct' }} - {% endif %}{% if forloop.last %}{{ value | remove:'.0' | remove:'ctw' | remove:'ct'  }}{% endif %}</span>
@@ -179,7 +179,7 @@
         {%- if show_carat != "No" -%}
             {%- assign is_carat_added = true -%}
             <div class="prd-caret-text">
-                <div class="shape-filter-label" aria-label="Carat weight filter">
+                <div class="shape-filter-label">
                     <span class="shape-label">Carat:</span>
                     <span class="shape-value plp-carat-value" data-handle="{{ product.handle }}">
                         {%- if groupedCaratArr and groupedCaratArr.size > 0 -%}
@@ -342,7 +342,7 @@
                         {% if metal == '14K White Gold' %}
                             {% comment %}{% assign dynamicWeight = settings.metal_14k_white_gold | to_i %}
                             {% assign metalWeightPrice = dynamicWeight | times: metal_weight %}{% endcomment %}
-                            <div class="swatch swatch-white{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}" data-metal-color="white" data-handle="{{ product.handle }}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="White Gold">
+                            <div class="swatch swatch-white{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}" data-metal-color="white" data-handle="{{ product.handle }}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="WG White Gold">
                                 <span class="metaltext">WG</span>
                             </div>
                             <textarea
@@ -373,7 +373,7 @@
                         {% elsif metal == '14K Yellow Gold' %}
                             {% comment %}{% assign dynamicWeight = settings.metal_14k_white_gold | to_i %}
                             {% assign metalWeightPrice = dynamicWeight | times: metal_weight %}{% endcomment %}
-                            <div class="swatch swatch-yellow{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="yellow" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="Yellow Gold">
+                            <div class="swatch swatch-yellow{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="yellow" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="YG Yellow Gold">
                                 <span class="metaltext">YG</span>
                             </div>
                             <textarea
@@ -404,7 +404,7 @@
                         {% elsif metal == '14K Rose Gold' %}
                             {% comment %}{% assign dynamicWeight = settings.metal_14k_rose_gold | to_i %}
                             {% assign metalWeightPrice = dynamicWeight | times: metal_weight %}{% endcomment %}
-                            <div class="swatch swatch-rose{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="rose" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="Rose Gold">
+                            <div class="swatch swatch-rose{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="rose" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="RG Rose Gold">
                                 <span class="metaltext">RG</span>
                             </div>
                             <textarea
@@ -435,7 +435,7 @@
                         {% elsif metal == 'Platinum' %}
                             {% comment %}{% assign dynamicWeight = settings.metal_platinum | to_i %}
                             {% assign metalWeightPrice = dynamicWeight | times: metal_weight %}{% endcomment %}
-                            <div class="swatch swatch-platinum{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="platinum" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="Platinum">
+                            <div class="swatch swatch-platinum{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="platinum" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="PL Platinum">
                                 <span class="metaltext">PL</span>
                             </div>
                             <textarea
@@ -470,9 +470,9 @@
                                 data-metal-color="sterling-silver" 
                                 data-handle="{{ product.handle }}" 
                                 onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" 
-                                tabindex="0"  
-                                role="button" 
-                                aria-label="Sterling Silver">
+                                tabindex="0"
+                                role="button"
+                                aria-label="SS Sterling Silver">
 
                                 <span class="metaltext">SS</span>
                             </div>
@@ -509,7 +509,7 @@
                             {%- endif -%}
                             {% comment %}{% assign dynamicWeight = settings.metal_14k_two_tone | to_i %}
                             {% assign metalWeightPrice = dynamicWeight | times: metal_weight %}{% endcomment %}
-                            <div class="swatch swatch-rose swatch-rose-white{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="rose-white" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="Rose White">
+                            <div class="swatch swatch-rose swatch-rose-white{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="rose-white" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="RW Rose White">
                                  <span class="metaltext">RW</span>
                             </div>
                             <textarea

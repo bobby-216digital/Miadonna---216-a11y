@@ -366,7 +366,7 @@
                       <i class="icon-solid-caret"></i>
                     </span>
                     <span class="button_text">Stone shape:
-                      <a href="javascript:void(0);" class="popup-icon" data-popup="#popup4">
+                      <a href="javascript:void(0);" class="popup-icon" data-popup="#popup4" aria-label="Shape guide">
                         <svg width="10" height="10" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M4.5 0.5625C6.67441 0.5625 8.4375 2.32559 8.4375 4.5C8.4375 6.67441 6.67441 8.4375 4.5 8.4375C2.32559 8.4375 0.5625 6.67441 0.5625 4.5C0.5625 2.32559 2.32559 0.5625 4.5 0.5625ZM4.5 9C6.98555 9 9 6.98555 9 4.5C9 2.01445 6.98555 0 4.5 0C2.01445 0 0 2.01445 0 4.5C0 6.98555 2.01445 9 4.5 9ZM3.65625 6.1875C3.50156 6.1875 3.375 6.31406 3.375 6.46875C3.375 6.62344 3.50156 6.75 3.65625 6.75H5.34375C5.49844 6.75 5.625 6.62344 5.625 6.46875C5.625 6.31406 5.49844 6.1875 5.34375 6.1875H4.78125V4.21875C4.78125 4.06406 4.65469 3.9375 4.5 3.9375H3.65625C3.50156 3.9375 3.375 4.06406 3.375 4.21875C3.375 4.37344 3.50156 4.5 3.65625 4.5H4.21875V6.1875H3.65625ZM4.5 3.23438C4.73379 3.23438 4.92188 3.04629 4.92188 2.8125C4.92188 2.57871 4.73379 2.39062 4.5 2.39062C4.26621 2.39062 4.07812 2.57871 4.07812 2.8125C4.07812 3.04629 4.26621 3.23438 4.5 3.23438Z" fill="black"/>
                         </svg>
@@ -528,6 +528,7 @@
           </div>
           <div class="setting-accordion-content">
             <div class="select-wrapper">
+              <label for="ring_sizes" class="visually-hidden">Length</label>
               <select class="sustainability-select" name="properties[Size]" data-option-type="length" id="ring_sizes">
                 <option data-option-price="0" value="">Select Length</option>
                 {% for length in size_length_meta %}
@@ -710,6 +711,13 @@
                 >
                 <div class="setting-accordion-content">
                   <div class="select-wrapper">
+                    <label for="ring_sizes2" class="visually-hidden">
+                      {% if product.metafields.attributes.sizes_label2 != blank %}
+                        {{- product.metafields.attributes.sizes_label2 -}}
+                      {% else -%}
+                        U.S. Ring Size
+                      {%- endif %}
+                    </label>
                     <select
                       class="sustainability-select"
                       id="ring_sizes2"
@@ -760,7 +768,8 @@
                 <span class="button_text">Engraving:</span>
                 <span id="engraving_selected_value" class="engraving_selected_value"></span>
               </div>
-              <div class="radio-wrapper">
+              <fieldset class="radio-wrapper" style="border: none; margin: 0; padding: 0;">
+                <legend class="visually-hidden">Engraving</legend>
                 <div class="label-wrapper">
                   <input type="radio" name="engraving" id="no" value="No" checked>
                   <label for="no">No</label>
@@ -781,7 +790,7 @@
                     &nbsp; {{ cart.currency.iso_code }})</label>
                   {% endcomment %}
                 </div>
-              </div>
+              </fieldset>
             </div>
             <div class="setting-accordion-content">
               <div id="show_hide_engraving" class="hide">

@@ -67,7 +67,7 @@
                       <div class="tooltiptext" id="tooltip-shape"  role="dialog"  aria-labelledby="tooltip-shape-title">
                         <div class="tooltip-title" id="tooltip-shape-title">
                           Shape 
-                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Shape tooltip">
+                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Shape tooltip">
                             {% render 'icon-close' %}
                           </button>
                         </div>
@@ -219,7 +219,7 @@
                             <div class="tooltiptext" id="tooltip-color"  role="dialog"  aria-labelledby="tooltip-color-title">
                               <div class="tooltip-title" id="tooltip-color-title">
                                 Color 
-                                <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close color tooltip">
+                                <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close color tooltip">
                                   {% render 'icon-close' %}
                                 </button>
                               </div>
@@ -269,7 +269,9 @@
                         max="{{ color_value_array | last }}"
                         value1="{{ colorParamsArray | first }}"
                         value2="{{ colorParamsArray | last }}"
-                        data="{{ color_values }}" 
+                        aria-label1="Minimum color"
+                        aria-label2="Maximum color"
+                        data="{{ color_values }}"
                         marks="true"
                         marks-count="{{ color_value_array | size }}"
                         marks-values-count="{{ color_value_array | size }}"
@@ -377,7 +379,7 @@
                             <div class="tooltiptext" id="tooltip-Carat"  role="dialog"  aria-labelledby="tooltip-Carat-title">
                               <div class="tooltip-title" id="tooltip-Carat-title">
                                 Carat Size  
-                                <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Carat tooltip">
+                                <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Carat tooltip">
                                   {% render 'icon-close' %}
                                 </button>
                               </div>
@@ -396,6 +398,8 @@
                         max="{{ maxCaratValue }}"
                         value1="{{ caratMinParams }}"
                         value2="{{ caratMaxParams }}"
+                        aria-label1="Minimum carat weight"
+                        aria-label2="Maximum carat weight"
                         moving-tooltip="false"
                         moving-tooltip-distance-to-pointer="-30"
                         moving-tooltip-bg="transparent"
@@ -655,7 +659,7 @@
                               <div class="tooltiptext" id="tooltip-price"  role="dialog"  aria-labelledby="tooltip-price-title">
                                 <div class="tooltip-title" id="tooltip-price-title">
                                   Price  
-                                  <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close price tooltip">
+                                  <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close price tooltip">
                                     {% render 'icon-close' %}
                                   </button>
                                 </div>
@@ -674,6 +678,8 @@
                           max="{{ maxPriceValue }}"
                           value1="{{ priceMinParams }}"
                           value2="{{ priceMaxParams }}"
+                          aria-label1="Minimum price"
+                          aria-label2="Maximum price"
                           step="0.01"
                           pointers-min-distance="999"
                           moving-tooltip="false"
@@ -874,7 +880,7 @@
                           <div class="tooltiptext" id="tooltip-clarity"  role="dialog"  aria-labelledby="tooltip-clarity-title">
                             <div class="tooltip-title" id="tooltip-clarity-title">
                               Clarity  
-                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close clarity tooltip">
+                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close clarity tooltip">
                                 {% render 'icon-close' %}
                               </button>
                             </div>
@@ -986,6 +992,8 @@
                         max="{{ clarity_value_array | last }}"
                         value1="{{ clarityParamsArray | first }}"
                         value2="{{ clarityParamsArray | last }}"
+                        aria-label1="Minimum clarity"
+                        aria-label2="Maximum clarity"
                         data="{{ clarityValues | join: ',' }}"
                         marks="true"
                         marks-count="{{ clarity_value_array | size }}"
@@ -1087,7 +1095,7 @@
                           <div class="tooltiptext" id="tooltip-cut"  role="dialog"  aria-labelledby="tooltip-cut-title">
                             <div class="tooltip-title" id="tooltip-cut-title">
                               cut  
-                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close cut tooltip">
+                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close cut tooltip">
                                 {% render 'icon-close' %}
                               </button>
                             </div>
@@ -1165,6 +1173,8 @@
                         max="{{ cut_value_array | last }}"
                         value1="{{ cutParamsArrayFirst }}"
                         value2="{{ cutParamsArray | last }}"
+                        aria-label1="Minimum cut"
+                        aria-label2="Maximum cut"
                         data="{{ cut_values | replace_last: ',', '' }}"
                         marks="true"
                         marks-count="{{ cut_value_array | size }}"
@@ -1213,7 +1223,7 @@
                           <div class="tooltiptext" id="tooltip-sustainable"  role="dialog"  aria-labelledby="tooltip-sustainable-title">
                             <div class="tooltip-title" id="tooltip-sustainable-title">
                               sustainable  
-                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close sustainable tooltip">
+                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close sustainable tooltip">
                                 {% render 'icon-close' %}
                               </button>
                             </div>
@@ -1308,7 +1318,7 @@
                                       <div class="tooltiptext" id="tooltip-fancy"  role="dialog"  aria-labelledby="tooltip-fancy-title">
                                         <div class="tooltip-title" id="tooltip-fancy-title">
                                           Fancy Color  
-                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close fancy tooltip">
+                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close fancy tooltip">
                                               {% render 'icon-close' %}
                                           </button>
                                         </div>
@@ -1430,7 +1440,7 @@
                           <div class="tooltiptext" id="tooltip-ratio"  role="dialog"  aria-labelledby="tooltip-ratio-title">
                             <div class="tooltip-title" id="tooltip-ratio-title">
                               L:W Ratio  
-                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close L:W Ratio Guide tooltip">
+                              <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close L:W Ratio Guide tooltip">
                                 {% render 'icon-close' %}
                               </button>
                             </div>
@@ -1448,6 +1458,8 @@
                                   max="{{ block.settings.main_title_ratio_max }}"
                                   value1="{{ ratioMinParams }}"
                                   value2="{{ ratioMaxParams }}"
+                                  aria-label1="Minimum length to width ratio"
+                                  aria-label2="Maximum length to width ratio"
                                   step="0.01"
                                   moving-tooltip="false"
                                   moving-tooltip-distance-to-pointer="-30"
@@ -1614,7 +1626,7 @@
                                   <div class="tooltiptext" id="tooltip-table"  role="dialog"  aria-labelledby="tooltip-table-title">
                                     <div class="tooltip-title" id="tooltip-table-title">
                                       Table %
-                                      <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Table % Guide tooltip">
+                                      <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Table % Guide tooltip">
                                         {% render 'icon-close' %}
                                       </button>
                                     </div>
@@ -1632,6 +1644,8 @@
                                 max="{{ block.settings.main_title_table_max }}"
                                 value1="{{ tableMinParams }}"
                                 value2="{{ tableMaxParams }}"
+                                aria-label1="Minimum table percentage"
+                                aria-label2="Maximum table percentage"
                                 step="0.01"
                                 moving-tooltip="false"
                                 moving-tooltip-distance-to-pointer="-30"
@@ -1794,7 +1808,7 @@
                                 <div class="tooltiptext" id="tooltip-depth"  role="dialog"  aria-labelledby="tooltip-depth-title">
                                   <div class="tooltip-title" id="tooltip-depth-title">
                                     Depth% 
-                                    <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Fluor. Guide tooltip">
+                                    <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Fluor. Guide tooltip">
                                       {% render 'icon-close' %}
                                     </button>
                                   </div>
@@ -1812,6 +1826,8 @@
                                   max="{{ block.settings.main_title_depth_max }}"
                                   value1="{{ depthMinParams }}"
                                   value2="{{ depthMaxParams }}"
+                                  aria-label1="Minimum depth percentage"
+                                  aria-label2="Maximum depth percentage"
                                   step="0.01"
                                   moving-tooltip="false"
                                   moving-tooltip-distance-to-pointer="-30"
@@ -1979,7 +1995,7 @@
                                       <div class="tooltiptext" id="tooltip-symmetry"  role="dialog"  aria-labelledby="tooltip-symmetry-title">
                                         <div class="tooltip-title" id="tooltip-symmetry-title">
                                           Symmetry
-                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Fluor. Guide tooltip">
+                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Fluor. Guide tooltip">
                                             {% render 'icon-close' %}
                                           </button>
                                         </div>
@@ -2093,7 +2109,7 @@
                                     <div class="tooltiptext" id="tooltip-fluorescence"  role="dialog"  aria-labelledby="tooltip-fluorescence-title">
                                       <div class="tooltip-title" id="tooltip-fluorescence-title">
                                         Fluorescence
-                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Fluor. Guide tooltip">
+                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Fluor. Guide tooltip">
                                 {% render 'icon-close' %}
                               </button>
                                       </div>
@@ -2209,7 +2225,7 @@
                                       <div class="tooltiptext" id="tooltip-polish"  role="dialog"  aria-labelledby="tooltip-polish-title">
                                         <div class="tooltip-title" id="tooltip-polish-title">
                                           Polish
-                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Fluor. Guide tooltip">
+                                          <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Fluor. Guide tooltip">
                                             {% render 'icon-close' %}
                                           </button>
                                         </div>
@@ -2327,7 +2343,7 @@
                                   <div class="tooltiptext" id="tooltip-certified"  role="dialog"  aria-labelledby="tooltip-certified-title">
                                     <div class="tooltip-title" id="tooltip-certified-title">
                                       Certified  
-                                      <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-lable="close Fluor. Guide tooltip">
+                                      <button class="icon-close vdb-lb-close-tooltip filter-mobile-view-close" aria-label="close Fluor. Guide tooltip">
                                         {% render 'icon-close' %}
                                       </button>
                                     </div>

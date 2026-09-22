@@ -1394,6 +1394,8 @@
                         >
                           <tc-range-slider
                             id="faceted_price_slider"
+                            aria-label1="Minimum price"
+                            aria-label2="Maximum price"
                             min="{{ lowestProductValue | replace: ',', '' }}"
                             max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
                             {% if filter.min_value.value -%}

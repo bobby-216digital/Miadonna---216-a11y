@@ -141,7 +141,7 @@
           {% if settings.cart_action != 'mini_cart' or settings.cart_action != 'drawer' %}
             href="{{ routes.cart_url }}"
           {% endif %}
-           aria-label="Cart"
+           aria-label="View your shopping bag"
         >
           <span class="header-cart__icon">
             {% render 'icon', name: settings.cart_icon, icon_class: 'header__icon' %}

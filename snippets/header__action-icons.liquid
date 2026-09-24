@@ -103,11 +103,11 @@
       <a href="#searchPopup" id="header__search-icon" class="header__link action-area__link h-tooltip" aria-label="Open search" role="button" data-show-search-trigger tabindex="0">
         {% render 'icon', name: 'search', icon_class: 'header__icon' %}
         <span class="icon-caption">{{ 'general.search.title' | t | escape }}</span>
-        <span class="tooltip-text">{{ 'general.search.title' | t | escape }}</span>
+        <span class="tooltip-text" aria-hidden="true">{{ 'general.search.title' | t | escape }}</span>
       </a>
     {% endif %}
 
-    <a href="/pages/visit-us" class="header__link action-area__link h-tooltip" aria-label="Find a store location" tabindex="0">
+    <a href="/pages/visit-us" class="header__link action-area__link h-tooltip" aria-label="Visit Us - find a store location" tabindex="0">
       {% render 'icon', name: 'location', icon_class: 'header__icon' %}
       <span class="tooltip-text">Visit Us</span>
     </a>
@@ -116,19 +116,19 @@
       {% comment %} Account icon {% endcomment %}
       {% if customer %}
         {% comment %} Logout {% endcomment %}
-        <a href="#mage" class="header__link action-area__link h-tooltip" aria-label="Login to your account">
+        <a href="#mage" class="header__link action-area__link h-tooltip" aria-label="{{ 'layout.customer.my_account' | t | escape }}">
         {%- comment -%}<a href="{{ routes.account_url }}" class="header__link action-area__link h-tooltip" aria-label="Login to your account">{%- endcomment -%}
           {% render 'icon', name: 'avatar-2', icon_class: 'header__icon' %}
           <span class="icon-caption">{{ 'layout.customer.my_account' | t | escape }}</span>
-          <span class="tooltip-text">{{ 'layout.customer.my_account' | t | escape }}</span>
+          <span class="tooltip-text" aria-hidden="true">{{ 'layout.customer.my_account' | t | escape }}</span>
         </a>
       {% else %}
         {% comment %} Login {% endcomment %}
-        <a href="#mage" class="header__link action-area__link h-tooltip"  aria-label="Login">
+        <a href="#mage" class="header__link action-area__link h-tooltip"  aria-label="{{ 'layout.customer.log_in' | t | escape }}">
         {%- comment -%}<a href="{{ routes.account_login_url }}" class="header__link action-area__link h-tooltip"  aria-label="Login">{%- endcomment -%}
           {% render 'icon', name: 'avatar-2', icon_class: 'header__icon' %}
           <span class="icon-caption">{{ 'layout.customer.log_in' | t | escape }}</span>
-          <span class="tooltip-text">{{ 'layout.customer.log_in' | t | escape }}</span>
+          <span class="tooltip-text" aria-hidden="true">{{ 'layout.customer.log_in' | t | escape }}</span>
         </a>
       {% endif %}
     {% endif %}
@@ -153,7 +153,7 @@
           </span>
           {% endcomment %}
         </span>
-         <span class="tooltip-text">Bag</span>
+         <span class="tooltip-text" aria-hidden="true">Bag</span>
         <span class="header-cart__caption icon-caption">
           {{ 'layout.general.cart' | t | escape }}
           {%- if icon_style == 'text' -%}

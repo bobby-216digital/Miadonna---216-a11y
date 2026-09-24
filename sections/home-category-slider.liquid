@@ -18,7 +18,7 @@
       {%- endif -%}
 
       {% if section.blocks.size > 0 %}
-      <div class="category-slider sl-space slick-cls progress-sl" aria-label="{{ section.settings.title | strip_html }}">
+      <div class="category-slider sl-space slick-cls progress-sl">
         {%- for block in section.blocks -%}
           {%- assign collection = block.settings.collection -%}
           {%- assign collection_image = block.settings.image -%}
@@ -27,7 +27,7 @@
             {%- assign img_900 = collection_image | image_url: width: 900 -%}
             {%- assign img_1200 = collection_image | image_url: width: 1200 -%}
             {%- assign img_1800 = collection_image | image_url: width: 1800 -%}
-            <div class="slide" aria-label="Category: {{ collection.title | default: block.settings.title }}">
+            <div class="slide">
               <div class="category-slide-text slide-cls sl-spacebox">
                 <a href="{{ collection.url }}" class="img-hover-effect radius-2" aria-label="Shop {{ collection.title | default: block.settings.title }}" tabindex="0">
                   <img

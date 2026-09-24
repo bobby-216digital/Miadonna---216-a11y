@@ -147,7 +147,7 @@
   {% if section.settings.animation != 'none' %}
     data-scroll-class="{{ section.settings.animation }}"
   {% endif %}
-  role="region" aria-labelledby="{{ section.settings.arialabelledby }}"
+  {% if section.settings.arialabelledby != blank %}role="region" aria-labelledby="{{ section.settings.arialabelledby }}"{% endif %}
 >
   {% if section.settings.main_title != blank %}
     <div class="contanier-nw">

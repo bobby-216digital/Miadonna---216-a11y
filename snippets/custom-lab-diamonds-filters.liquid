@@ -85,11 +85,10 @@
         {% assign countshap = 5 %}
     {% endif %} 
     
-      <button
+      <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
    data-filter="shapes"
-    role="listitem"
     aria-label="Filter by shape. Currently selected: Round"
   >
     <span class="filter-label">Shape:</span>
@@ -273,7 +272,7 @@
       <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
    {% when 'Carat' %}
     
     {% assign caratMinParams = '2' %}
@@ -320,11 +319,10 @@
     {% if caratMaxParams == blank %}{% assign caratMaxParams = maxCaratValue %}{% endif %}
 
     {% if caratMinParams !=blank and caratMaxParams!=blank %}
-     <button
+     <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="carat"
-    role="listitem"
     aria-label="Filter by carat. Range 0.70 to 26.2 carats"
   >
     <span class="filter-label">Carat:</span>
@@ -332,7 +330,7 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
   {% endif %}
 
   {% when 'Price' %}
@@ -369,11 +367,10 @@
       {% if priceMinParams == blank %}{% assign priceMinParams = minPriceValue %}{% endif %}
       {% if priceMaxParams == blank %}{% assign priceMaxParams = maxPriceValue %}{% endif %}
     {% if priceMinParams !=blank and priceMaxParams!=blank %}
-    <button
+    <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="price"
-    role="listitem"
     aria-label="Filter by price. Range $900 to $36,252"
   >
     <span class="filter-label">Price:</span>
@@ -388,7 +385,7 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-    </button>
+    </button></div>
    {% endif %}
 {% when 'Cut' %}
     {% assign cut_values = '' %}
@@ -438,11 +435,10 @@
           {% break %}
         {% endif %}
       {% endfor %}
-    <button
+    <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="cut"
-    role="listitem"
     aria-label="Filter by cut. Selected Ideal plus one option"
   >
     <span class="filter-label">Cut:</span>
@@ -452,7 +448,7 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
   {% endif %}
   {% when 'Color' %}
     {% assign color_values = block.settings['main_value_color_1'] %}
@@ -498,11 +494,10 @@
             {% break %}
           {% endif %}
         {% endfor %}
-      <button
+      <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="color"
-    role="listitem"
     aria-label="Filter by color. Selected D plus two options"
   >
     {% if colorcount > 0 %}
@@ -521,7 +516,7 @@
         <span class="dmd-rightarrow" aria-hidden="true">
           {% render 'icon-arrowright' %}
         </span>
-    </button>
+    </button></div>
   {% endif %}
   {% when 'Clarity' %}
     {% assign clarity_values = '' %}
@@ -574,11 +569,10 @@
       {% break %}
     {% endif %}
   {% endfor %}
-  <button
+  <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="clarity"
-    role="listitem"
     aria-label="Filter by clarity. Selected IF plus two options"
   >
     <span class="filter-label">Clarity:</span>
@@ -588,22 +582,21 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
-{% endif  %} 
+  </button></div>
+{% endif  %}
 {% endcase %}
 {% endfor %}
-   <button
+   <div role="listitem"><button
     class="filter-pill filter-pill--all vdb-lb-advanced-filter-mobile-view-open"
     data-id=""
     type="button"
-    role="listitem"
     aria-label="Open all filters"
   >
     ALL FILTERS
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
 
 </div>
 

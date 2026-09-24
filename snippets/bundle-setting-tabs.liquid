@@ -540,7 +540,7 @@
                           {% endif %}
                           {% comment %} IGS-18-05-26 {% endcomment %}
                           {% if selectedMetals[0] == 'Two-Tone' %}
-                            {% assign metalLabel1 = '' %}
+                            {% assign metalLabel1 = 'TT' %}
                           {% endif %}
 
                           {% if metals == 'Two-Tone 14K White Gold and 14K Rose Gold' %}
@@ -1032,7 +1032,7 @@
                           {% comment %} IGS-18-05-26 {% endcomment %}
 
                           {% if selectedMetals[0] == 'Two-Tone' %}
-                            {% assign metalLabel1 = '' %}
+                            {% assign metalLabel1 = 'TT' %}
                           {% endif %}
 
                           {% if metals == 'Two-Tone 14K White Gold and 14K Rose Gold' %}
@@ -1700,6 +1700,7 @@
                 </div>
                 <div class="setting-accordion-content">
                   <div class="select-wrapper">
+                    <label for="size_stone_sizes" class="visually-hidden">Side Stone Size</label>
                     <select class="sustainability-select" name="size_stone_sizes" id="size_stone_sizes">
                       <option value="">Select side Stone Sizes</option>
                     </select>
@@ -1821,6 +1822,7 @@
                     </div>
                     <div class="setting-accordion-content pdp-item-options">
                       <div class="select-wrapper">
+                        <label for="ring_finish" class="visually-hidden">Finish</label>
                         <select class="sustainability-select" name="ring_finish" id="ring_finish">
                           {% for finishes in dynamicFinishes %}
                             {% assign finish = finishes | split: ':' %}
@@ -1893,6 +1895,7 @@
                         </div>
                         <div class="setting-accordion-content pdp-item-options">
                           <div class="select-wrapper">
+                            <label for="engraving_font" class="visually-hidden">Engraving font</label>
                             <select
                               class="sustainability-select"
                               name="engraving_font"
@@ -2003,6 +2006,7 @@
                     <div class="setting-accordion-content">
                       <div class="select-box-wrapper" style="width: 100%;">
                         <div class="select-wrapper">
+                          <label for="initial_engraving" class="visually-hidden">Initial</label>
                           <select
                             class="sustainability-select"
                             name="initial_engraving"

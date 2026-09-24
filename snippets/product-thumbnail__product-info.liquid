@@ -544,7 +544,7 @@
                             {%- endif -%}
                             {% comment %}{% assign dynamicWeight = settings.metal_14k_two_tone | to_i %}
                             {% assign metalWeightPrice = dynamicWeight | times: metal_weight %}{% endcomment %}
-                            <div class="swatch swatch-yellow swatch-yellow-white{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="yellow-white" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="Yellow White">
+                            <div class="swatch swatch-yellow swatch-yellow-white{% if activeMetal == activeMetalValue %}{% assign selected_metal_id = metal_variant_id %} active{% endif %}"{% unless logic_disclaimer == 'true' %} data-disclaimer="{{image_disclaimer}}"{% endunless %} data-metal-color="yellow-white" data-handle="{{ product.handle }}" data-ctw-fraction="{{ ctw_fraction }}" onclick="swatchCollectionSelectedFun(this, 'metal', '{{ isBundleProduct }}')" tabindex="0" role="button" aria-label="YW Yellow White">
                                 <span class="metaltext">YW</span>
                             </div>
                             <textarea

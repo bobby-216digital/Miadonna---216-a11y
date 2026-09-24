@@ -649,6 +649,7 @@
                 </div>
                 <div class="setting-accordion-content">
                   <div class="select-wrapper">
+                    <label for="ring_finish" class="visually-hidden">Finish</label>
                     <select name="properties[Finish]" class="sustainability-select" id="ring_finish">
                       {% for finishes in dynamicFinishes %}
                         {% assign finish = finishes | split: ':' %}
@@ -808,6 +809,7 @@
                   </div>
                   <div class="setting-accordion-content pdp-item-options">
                     <div class="select-wrapper">
+                      <label for="engraving_font" class="visually-hidden">Engraving font</label>
                       <select
                         class="sustainability-select"
                         name="engraving_font"
@@ -918,6 +920,7 @@
               <div class="setting-accordion-content">
                 <div class="select-box-wrapper" style="width: 100%;">
                   <div class="select-wrapper">
+                    <label for="initial_engraving" class="visually-hidden">Initial</label>
                     <select
                       class="sustainability-select"
                       name="initial_engraving"

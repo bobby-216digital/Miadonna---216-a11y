@@ -61,10 +61,10 @@
   }
 {% endstyle %}
 
-<div class="bannertext-section-{{ bnrtxt_gen_id }} {{ section.settings.class }}" {{ block.shopify_attributes }} role="region" aria-labelledby="{{ section.settings.arialabelledby }}">
+<div class="bannertext-section-{{ bnrtxt_gen_id }} {{ section.settings.class }}" {{ block.shopify_attributes }} {% if section.settings.arialabelledby != blank %}role="region" aria-labelledby="{{ section.settings.arialabelledby }}"{% endif %}>
   <div class="bannertext-content-{{ bnrtxt_gen_id }}">
     {% if section.settings.heading != blank %}
-      <h1 class="bannertext-heading-{{ bnrtxt_gen_id }}" id="{{ section.settings.arialabelledby }}">{{ section.settings.heading }}</h1>
+      <h1 class="bannertext-heading-{{ bnrtxt_gen_id }}"{% if section.settings.arialabelledby != blank %} id="{{ section.settings.arialabelledby }}"{% endif %}>{{ section.settings.heading }}</h1>
     {% endif %}
 
     {% if section.settings.subheading != blank %}

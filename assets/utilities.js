@@ -356,9 +356,11 @@ window.PXUTheme.dropdownMenu = function () {
   });
 
   // Listen for enter key
-  megamenus.each(function (index, item) {
+  megamenus.not(".mobile-menu__submenu").each(function (index, item) {
     let itemVisited = false;
     $(item).on("keydown", function (e) {
+      // Only the top-level link toggles the panel; keys inside it behave normally
+      if ($(e.target).closest(".mega-menu__section, .mega-menu").length) return;
       // Check if enter key
       if (e.which === 13) {
         // Prevent it from going to the link

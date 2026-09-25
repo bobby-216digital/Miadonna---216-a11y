@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const slides = metalSlider.querySelectorAll(".swiper-slide");
 
     var swiperMetal = new Swiper(metalSlider, {
+      a11y: { enabled: false },
       slidesPerView: "auto", 
       spaceBetween: 15,
       mousewheel: {
@@ -92,6 +93,7 @@ let shapeSlider = document.querySelector(".shapes-slider");
 
 if (shapeSlider) {
   var swiperShape = new Swiper(shapeSlider, {
+    a11y: { enabled: false },
     slidesPerView: 'auto',
     spaceBetween: 15,
     mousewheel: true,

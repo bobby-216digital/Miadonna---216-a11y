@@ -29,7 +29,7 @@
             {%- assign img_1800 = collection_image | image_url: width: 1800 -%}
             <div class="slide">
               <div class="category-slide-text slide-cls sl-spacebox">
-                <a href="{{ collection.url }}" class="img-hover-effect radius-2" aria-label="Shop {{ collection.title | default: block.settings.title }}" tabindex="0">
+                <a href="{{ collection.url }}" class="img-hover-effect radius-2" aria-label="Shop {{ block.settings.title | default: collection.title | escape }}" tabindex="0">
                   <img
                     src="{{ img_1200 | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}"
                     srcset="

@@ -529,7 +529,7 @@
           <div class="setting-accordion-content">
             <div class="select-wrapper">
               <label for="ring_sizes" class="visually-hidden">Length</label>
-              <select class="sustainability-select" name="properties[Size]" data-option-type="length" id="ring_sizes">
+              <select class="sustainability-select" name="properties[Size]" data-option-type="length" id="ring_sizes" aria-describedby="ring_error">
                 <option data-option-price="0" value="">Select Length</option>
                 {% for length in size_length_meta %}
                   <option value="{{ length }}">{{ length }}</option>
@@ -538,7 +538,7 @@
               {% render 'icon', name: 'down-caret', icon_class: 'select-caret' %}
             </div>
           </div>
-          <strong><span id="ring_error" class="error-nwcolor"></span></strong>
+          <strong><span id="ring_error" class="error-nwcolor" role="alert"></span></strong>
           <!-- Size field Ends -->
         </div>
       {% elsif product.type != 'Pendants' and product.type != 'Earrings' and product.type != 'Bracelets' %}
@@ -615,6 +615,7 @@
                       <select
                         class="sustainability-select"
                         id="ring_sizes"
+                        aria-describedby="ring_error"
                         name="properties[{% if product.metafields.attributes.sizes_label != blank %}{{ product.metafields.attributes.sizes_label }}{% else %}Size{% endif %}]"
                         data-ring-label="{% if product.metafields.attributes.sizes_label != blank %}{{ product.metafields.attributes.sizes_label }}{% else %}Size{% endif %}"
                       >
@@ -632,7 +633,7 @@
                     {% render 'icon', name: 'down-caret', icon_class: 'select-caret' %}
                   </div>
                 </div>
-                <strong><span id="ring_error" class="error-nwcolor"></span></strong>
+                <strong><span id="ring_error" class="error-nwcolor" role="alert"></span></strong>
               {% endif %}
             {% endif %}
             <!-- Size field Ends -->

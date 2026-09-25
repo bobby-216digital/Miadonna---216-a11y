@@ -117,6 +117,27 @@
 
         return false;
       });
+
+      $(document).on("keydown", "[data-ajax-cart-drawer].is-visible", function (e) {
+        if (e.key === "Escape") {
+          window.PXUTheme.jsAjaxCart.hideDrawer();
+          return;
+        }
+        if (e.key !== "Tab") return;
+        const $focusable = $(this).find('a[href], button, input, select, textarea, [tabindex="0"]').filter(":visible").filter(function () {
+          return !this.disabled;
+        });
+        if (!$focusable.length) return;
+        const first = $focusable[0];
+        const last = $focusable[$focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
     },
 
     insertTreeToCart: function () {
@@ -238,10 +259,14 @@
     },
     showDrawer: function () {
       if (this.cart_action != "drawer") return false;
+      if (!this.ajaxCartDrawer.hasClass("is-visible")) {
+        this.drawerReturnFocus = document.activeElement;
+      }
       $("html").addClass("show-cartdrawer");
       this.ajaxCartDrawer.addClass("is-visible");
       $(".ajax-cart__overlay").addClass("is-visible");
       $("html").css("overflow", "hidden");
+      this.ajaxCartDrawer.find(".ajax-cart__close-icon").filter(":visible").first().trigger("focus");
 
       setTimeout(function () {
         window.PXUTheme.jsAjaxCart.relatedSliders();
@@ -249,10 +274,17 @@
     },
     hideDrawer: function () {
       if (this.cart_action != "drawer") return false;
+      const focusWasInDrawer = this.ajaxCartDrawer.toArray().some(function (el) {
+        return $.contains(el, document.activeElement);
+      });
       $("html").removeClass("show-cartdrawer");
       this.ajaxCartDrawer.removeClass("is-visible");
       $(".ajax-cart__overlay").removeClass("is-visible");
       $("html").css("overflow", "");
+      if (focusWasInDrawer && this.drawerReturnFocus && document.contains(this.drawerReturnFocus)) {
+        $(this.drawerReturnFocus).trigger("focus");
+      }
+      this.drawerReturnFocus = null;
     },
     removeFromCart: function (lineID, callback) {
       $.ajax({

@@ -283,7 +283,7 @@
                   {%- comment -%}<div class="shapes-slider {% if allShapes.size > 10 %}swiper shapes--slider{% else %}shape_no_slider{% endif %}">{%- endcomment -%}
                   <div class="detail-shapes swiper shapes-slider shapes--slider">
                     {%- comment -%}{% if allShapes.size > 10 %}<div class="swiper-wrapper">{% endif %}{%- endcomment -%}
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper" role="radiogroup" aria-label="Stone Shape">
                     {% for shapes in allShapes %}
                       <div class="setting-value-inputs shape-enable-disable swiper-slide{% comment %}{% if allShapes.size > 10 %} swiper-slide{% endif %}{% endcomment %}">
                         {% assign shaprId = shapes | replace: ' ', '_' %}
@@ -539,6 +539,8 @@
                       <div
                         class="swiper-wrapper{% comment %}{% if option.values.size > 7 %}swiper-wrapper{% else %}metal_slider metal_no_slider 12345 {% if option.values.size < 5 %}metal_less_5_slider{% endif %}{% endif %}{% endcomment %}"
                         data-option-position="{{ forloop.index }}"
+                        role="radiogroup"
+                        aria-label="Metal"
                       >
                         {% for metals in option.values %}
                           {% assign selectedMetals = metals | split: ' ' %}
@@ -1101,6 +1103,8 @@
                       <div
                         class="swiper-wrapper{% comment %}{% if dynamicMetals.size > 7 %}swiper-wrapper{% else %}metal_slider metal_no_slider 123456 {% if dynamicMetals.size < 5 %}metal_less_5_slider{% endif %}{% endif %}{% endcomment %}"
                         data-option-position="{{ forloop.index }}"
+                        role="radiogroup"
+                        aria-label="Metal"
                       >
                         {% for metals in dynamicMetals %}
                           {% assign selectedMetals = metals | split: ' ' %}
@@ -1341,7 +1345,8 @@
                                 for="{{metalId}}"
                                 {% comment %}style="background-color: {{metalColor}} !important"{% endcomment %}
                               >
-                                {{- metalLabel1 -}}
+                                <span aria-hidden="true">{{- metalLabel1 -}}</span>
+                                <span class="visually-hidden">{% if metals contains metalLabel1 %}{{ metals }}{% else %}{{ metalLabel1 }} {{ metals }}{% endif %}</span>
                               </label>
                               {% comment %} IGS-18-05-26 {% endcomment %}
                             </div>
@@ -1524,7 +1529,7 @@
                 id="center_stone_check_boxes"
               >
                 <div class="setting-values-container" id="first_four_stone_cut">
-                  <div class="setting-values-wrapper" id="first_four_stone_cut_wrapper"></div>
+                  <div class="setting-values-wrapper" id="first_four_stone_cut_wrapper" role="radiogroup" aria-label="{%- if product.type == 'Earrings' %}Stone{% else %}Center Stone{% endif -%}"></div>
                   <div class="additional-info info-border-div" style="display:none">
                     <p class="info-border"></p>
                     <span class="info-border-text">Or chosen by our experts</span>
@@ -1621,7 +1626,7 @@
                   </div>
                 {% endif %}
                 <div class="setting-values-container">
-                  <div class="setting-values-wrapper">
+                  <div class="setting-values-wrapper" role="radiogroup" aria-label="Quality">
                     <div class="setting-value-inputs">
                       <input
                         type="radio"
@@ -1831,7 +1836,7 @@
                 <div class="setting-accordion-content">
                   <div class="select-wrapper">
                     <label for="ring_sizes" class="visually-hidden">Length</label>
-                    <select class="sustainability-select" data-option-type="length" name="ring_sizes" id="ring_sizes">
+                    <select class="sustainability-select" data-option-type="length" name="ring_sizes" id="ring_sizes" aria-describedby="ring_error">
                       <option data-option-price="0" value="">Select Length</option>
                       {% for length in size_length_meta %}
                         <option value="{{ length }}">{{ length }}</option>
@@ -1840,7 +1845,7 @@
                     {% render 'icon', name: 'down-caret', icon_class: 'select-caret' %}
                   </div>
                 </div>
-                <strong><span id="ring_error" class="error-nwcolor"></span></strong>
+                <strong><span id="ring_error" class="error-nwcolor" role="alert"></span></strong>
                 <!-- Size field Ends -->
               </div>
             {% elsif product.type != 'Pendants' and product.type != 'Earrings' and product.type != 'Bracelets' %}
@@ -1918,6 +1923,7 @@
                               class="sustainability-select"
                               name="ring_sizes"
                               id="ring_sizes"
+                              aria-describedby="ring_error"
                               data-ring-label="{% if product.metafields.attributes.sizes_label != blank %}{{ product.metafields.attributes.sizes_label }}{% else %}Size{% endif %}"
                             >
                               <option data-option-price="0" value="">
@@ -1934,7 +1940,7 @@
                           {% render 'icon', name: 'down-caret', icon_class: 'select-caret' %}
                         </div>
                       </div>
-                      <strong><span id="ring_error" class="error-nwcolor"></span></strong>
+                      <strong><span id="ring_error" class="error-nwcolor" role="alert"></span></strong>
                     {% endif %}
                   {% endif %}
                   <!-- Size field Ends -->

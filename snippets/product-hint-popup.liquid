@@ -50,44 +50,40 @@
                 <div class="container">
                   <div class="one-half small-down--one-whole column">
                     <h5>Sender</h5>
-                    <label for="hint_from_name" class="visually-hidden">Name</label>
+                    <label for="hint_from_name" class="visually-hidden">Sender name</label>
                     <input
                       type="text"
                       name="NAME"
                       id="hint_from_name"
-                      tabindex="9"
                       placeholder="NAME*"
                       required
                     >
-                    <label for="hint_from_email" class="visually-hidden">Email</label>
+                    <label for="hint_from_email" class="visually-hidden">Sender email</label>
                     <input
                       type="email"
                       name="EMAIL"
-                      id="k_id_email"
-                      tabindex="10"
+                      id="hint_from_email"
                       placeholder="EMAIL*"
                       required
                     >
                   </div>
                   <div class="one-half small-down--one-whole column">
                     <h5>Recipient</h5>
-                    <label for="hint_to_name" class="visually-hidden">Name*</label>
+                    <label for="hint_to_name" class="visually-hidden">Recipient name</label>
                     <input
                       type="text"
                       name="RNAME"
                       id="hint_to_name"
-                      tabindex="11"
                       placeholder="NAME*"
                       required
                     >
                     <div style="display: none;" id="error_message_name_required" class="error_message">Please enter the name</div>
 
-                    <label for="hint_to_email" class="visually-hidden">Email*</label>
+                    <label for="hint_to_email" class="visually-hidden">Recipient email</label>
                     <input
                       type="email"
                       name="REMAIL"
                       id="hint_to_email"
-                      tabindex="12"
                       placeholder="EMAIL*"
                       required
                     >
@@ -101,7 +97,6 @@
                     <select
                       name="MPREFERNCE"
                       id="hint_metal_preference"
-                      tabindex="13"
                     >
                       <option
                         value=""
@@ -122,7 +117,6 @@
                     <select
                        name="RSIZE"
                       id="hint_ring_size"
-                      tabindex="14"
                     >
                       <option
                         value=""
@@ -180,7 +174,6 @@
                     <select
                      name="STYPE"
                       id="hint_center_stone"
-                      tabindex="15"
                     >
                       <option
                         value=""
@@ -199,7 +192,6 @@
                     <textarea
                      name="NOTE"
                       id="hint_personal_note"
-                      tabindex="16"
                       placeholder="ADD A PERSONAL NOTE"
                     ></textarea>
                   </div>
@@ -208,7 +200,6 @@
                   type="submit"
                   onclick="submitFormhint()"
                   id="hint-submit"
-                  tabindex="17"
                 >
                   Send Hint
                 </button>
@@ -231,7 +222,7 @@
 <script>
   function submitFormhint() {
     let formData = new FormData();
-    var fromemail = jQuery("#k_id_email").val();
+    var fromemail = jQuery("#hint_from_email").val();
     var fromname = jQuery("#hint_from_name").val();
     var name = jQuery("#hint_to_name").val();
     var title = jQuery("#product-title").val();

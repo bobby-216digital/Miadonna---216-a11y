@@ -289,6 +289,21 @@ window.PXUTheme.dropdownMenu = function () {
   // Listen for enter key
   menuItems.each(function (index, item) {
     let itemVisited = false;
+    const $navItem = $(item).closest(".navbar-item");
+    const hasPanel = function () {
+      return $navItem.find(".mega-menu__section, .navbar-dropdown").length > 0;
+    };
+    const closePanel = function () {
+      $navItem.removeClass("show-dropdown");
+      $navItem.find(".mega-menu__section").removeClass("is-active");
+      if (hasPanel()) $(item).attr("aria-expanded", "false");
+      itemVisited = false;
+    };
+    $(item).on("focus", function () {
+      if (hasPanel() && !this.hasAttribute("aria-expanded")) {
+        $(this).attr("aria-expanded", "false");
+      }
+    });
     $(item).on("keydown", function (e) {
       // Check if enter key
       if (e.which === 13) {
@@ -298,19 +313,26 @@ window.PXUTheme.dropdownMenu = function () {
         }
 
         // Show dropdown
-        $(this).closest(".navbar-item").addClass("show-dropdown");
+        $navItem.addClass("show-dropdown");
+        $(".mega-menu__section").not($navItem.find(".mega-menu__section")).removeClass("is-active");
+        $navItem.find(".mega-menu__section").addClass("is-active");
+        if (hasPanel()) $(item).attr("aria-expanded", "true");
 
         // Reset itemVisited so that they can visit the link
         itemVisited = true;
       }
     });
-    $(item)
-      .closest(".navbar-item")
-      .on("focusout", function (e) {
-        if ($(this).find(e.relatedTarget).length === 0) {
-          $(item).closest(".navbar-item").removeClass("show-dropdown");
-        }
-      });
+    $navItem.on("keydown", function (e) {
+      if (e.key === "Escape" && $navItem.hasClass("show-dropdown")) {
+        closePanel();
+        $(item).trigger("focus");
+      }
+    });
+    $navItem.on("focusout", function (e) {
+      if ($(this).find(e.relatedTarget).length === 0) {
+        closePanel();
+      }
+    });
   });
 
   // Listen for enter key
@@ -732,6 +754,11 @@ window.PXUTheme.mobileMenu = {
     $("body").on("click", '[data-show-mobile-menu="true"]', function () {
       window.PXUTheme.mobileMenu.close();
     });
+    $("body").on("keydown", ".mobile-menu", function (e) {
+      if (e.key === "Escape" && $("body").hasClass("mobile-menu--opened")) {
+        window.PXUTheme.mobileMenu.close();
+      }
+    });
     if (window.PXUTheme.jsHeader?.enable_sticky === true) {
       this.enableSticky();
     }
@@ -759,6 +786,7 @@ window.PXUTheme.mobileMenu = {
     // });
     this.$mobileMenuIcon.addClass("is-active");
     $("[data-show-mobile-menu]").attr("data-show-mobile-menu", true);
+    $(".mobile-menu__toggle-button").attr("aria-expanded", "true");
     if (typeof window.PXUTheme.jsAjaxCart !== "undefined") {
       window.PXUTheme.jsAjaxCart.hideMiniCart();
       window.PXUTheme.jsAjaxCart.hideDrawer();
@@ -767,9 +795,11 @@ window.PXUTheme.mobileMenu = {
     //Set delay on menu open to get proper page position
     setTimeout(function () {
       $("body").addClass("mobile-menu--opened");
+      $(".mobile-menu .mmobile-close:visible").first().trigger("focus");
     }, 10);
   },
   close: function () {
+    const focusWasInMenu = $.contains($(".mobile-menu")[0] || document.body, document.activeElement);
     $("body").removeClass("mobile-menu--opened");
 
     // Once mobile menu is closed, return back to previous position on page
@@ -777,6 +807,10 @@ window.PXUTheme.mobileMenu = {
     window.scrollTo(0, lastScrollPosition);
     this.$mobileMenuIcon.removeClass("is-active");
     $("[data-show-mobile-menu]").attr("data-show-mobile-menu", false);
+    $(".mobile-menu__toggle-button").attr("aria-expanded", "false");
+    if (focusWasInMenu) {
+      $(".mobile-menu__toggle-button").trigger("focus");
+    }
   },
   enableSticky: function () {
     window.PXUTheme.jsHeader.disableSticky();
@@ -2650,6 +2684,12 @@ function reloadShapeSlider(varslidesToShow = 5, variableWidth= false) {
   });
 }
 
+// Card image sliders sit inside the product link, so their dots are
+// swipe/click affordances only and stay out of the tab order.
+function plpSliderA11y($slider) {
+  $slider.find('.slick-dots').attr('aria-hidden', 'true').find('button').attr('tabindex', '-1');
+}
+
 function reloadGallerySlider() {
   const $gallerySlider = $('.plp_prd-sl');
 
@@ -2669,10 +2709,29 @@ function reloadGallerySlider() {
           arrows: false,
           autoplay: false,
           dots: true,
-          accessibility: true,
+          accessibility: false,
           infinite: false
         });
+        plpSliderA11y($slider);
       }
     });
   }
 }
+
+// Enter/Space activation for theme controls that are rendered as
+// role="button" elements rather than native buttons.
+document.addEventListener("keydown", function (e) {
+  if (e.defaultPrevented || (e.key !== "Enter" && e.key !== " ")) return;
+  const el = e.target;
+  if (!el.matches || !el.matches([
+    ".mobile-menu__toggle-button",
+    ".filters-section--filter-button",
+    ".filter-mobile-view-close",
+    ".filter__list-label",
+    ".ajax-cart__close-icon",
+    '.swatch[role="button"]',
+    '.shape-item[role="button"]'
+  ].join(","))) return;
+  e.preventDefault();
+  el.click();
+});

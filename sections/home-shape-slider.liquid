@@ -15,7 +15,7 @@
         {% for block in section.blocks %}
           <div class="slide">
             <div class="shape-slide-text slide-cls sl-spacebox">
-              <a href="{{ block.settings.shape_link }}" class="radius-2" aria-describedby="desc-{{ forloop.index }}" tabindex="0">
+              <a href="{{ block.settings.shape_link }}" class="radius-2" tabindex="0">
                 <span class="shap-svg" aria-hidden="true">
                   {% render 'shape-icon-render', snippet_name: block.settings.icon_snippet %}
                 </span>
@@ -23,7 +23,7 @@
                   <img src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.hover_image | image_url }}" class="shape-h-show" width="555" height="822" alt="{{ block.settings.shape_name }}">
                 {% endif %}
                 <!-- Description for screen readers -->
-                <span id="desc-{{ forloop.index }}" class="sr-only">{{ block.settings.shape_name }}</span>
+                <span class="sr-only">{{ block.settings.shape_name }}</span>
                 <span class="line-hover black-link" aria-hidden="true">{{ block.settings.shape_name }}</span>
               </a>
             </div>
@@ -40,11 +40,11 @@
           {% endif %}
 
           <div class="shape-slide-text">
-            <a href="{{ block.settings.shape_link }}" class="radius-2" aria-describedby="mob-desc-{{ forloop.index }}" tabindex="0">
+            <a href="{{ block.settings.shape_link }}" class="radius-2" tabindex="0">
               <span class="shap-svg" aria-hidden="true">
                 {% render 'shape-icon-render', snippet_name: block.settings.icon_snippet %}
               </span>
-              <span id="mob-desc-{{ forloop.index }}" class="sr-only">{{ block.settings.shape_name }}</span>
+              <span class="sr-only">{{ block.settings.shape_name }}</span>
               <span class="line-hover black-link" aria-hidden="true">{{ block.settings.shape_name }}</span>
             </a>
           </div>

@@ -627,6 +627,29 @@
     data-shop-url="{{ shop.url }}"
     data-current-lang="{{ request.locale.iso_code }}"
   >
+    <style>
+      .skip-to-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2147483647;
+        padding: 12px 20px;
+        background: #fff;
+        color: #001514;
+        font-size: 14px;
+        text-decoration: underline;
+        transform: translateY(-100%);
+      }
+      .skip-to-content:focus {
+        transform: none;
+        outline: 2px solid #001514;
+        outline-offset: -4px;
+      }
+      #MainContent:focus {
+        outline: none;
+      }
+    </style>
+    <a class="skip-to-content" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R588DLD"
@@ -840,6 +863,7 @@
     {%- endunless -%}
 
     <main id="template-{{ template | replace: '.', '-' | handle }}" data-check-for-order="true">
+      <div id="MainContent" tabindex="-1"></div>
       <div class="dynamic-sections">
         {% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
       </div>
@@ -1946,9 +1970,10 @@
               arrows: false,
               autoplay: false,
               dots: true,
-              accessibility: true,
+              accessibility: false,
               infinite: false
             });
+            plpSliderA11y($slider);
           }
         });
       }
@@ -2186,7 +2211,13 @@
     $(document).on('click', '.mm-inputbackbutton', function (e) {
       e.preventDefault();
       var $submenuList = $(this).closest('.mobile-submenu__list');
-      $submenuList.prevAll('.submenu__input').first().prop('checked', false);
+      $submenuList.prevAll('.submenu__input').first().prop('checked', false).trigger('focus');
+    });
+
+    $(document).on('change', '.mobile-menu .submenu__input', function () {
+      if (this.checked) {
+        $(this).siblings('.mobile-menu__submenu.has-mega-menu').find('.mm-inputbackbutton:visible').first().trigger('focus');
+      }
     });
   });
 </script>
@@ -2353,9 +2384,10 @@
                 arrows: false,
                 autoplay: false,
                 dots: true,
-                accessibility: true,
+                accessibility: false,
                 infinite: false
               });
+              plpSliderA11y($slider);
             }
           });
         } else {
@@ -2387,7 +2419,11 @@
   (function () {
   function syncTabindex(slide) {
     var hidden = slide.getAttribute('aria-hidden') === 'true';
-    slide.setAttribute('tabindex', hidden ? '-1' : '0');
+    if (hidden) {
+      slide.setAttribute('tabindex', '-1');
+    } else {
+      slide.removeAttribute('tabindex');
+    }
     slide.querySelectorAll('a, button, input, select, textarea, [tabindex]')
       .forEach(function (el) {
         if (hidden) {

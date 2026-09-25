@@ -4,6 +4,13 @@
 
 #theme-ajax-cart.is-drawer{
   overflow:hidden;
+  visibility: hidden;
+  transition: right 0.3s ease-in-out, left 0.3s ease-in-out, visibility 0s linear 0.3s;
+}
+
+#theme-ajax-cart.is-drawer.is-visible{
+  visibility: visible;
+  transition: right 0.3s ease-in-out, left 0.3s ease-in-out, visibility 0s linear 0s;
 }
 
 .ajax-cart__overlay {

@@ -392,8 +392,7 @@
                     href="{{ marketing_banner_1_link }}"
                     class="list-bnrimg"
                     style="background-image: url('{{ banner1_1x }}'); background-image: image-set(url('{{ banner1_1x }}') 1x, url('{{ banner1_2x }}') 2x);"
-                    role="img"
-                    aria-label="{{ marketing_banner_video_1.alt | escape }}"
+                    {% if marketing_banner_video_1.alt != blank %}aria-label="{{ marketing_banner_video_1.alt | escape }}"{% endif %}
                   >
               {%- else -%}
                 {%- assign banner1_1x = marketing_banner_video_1 | image_url: width: 800 -%}
@@ -401,8 +400,7 @@
                 <div
                   class="list-bnrimg"
                   style="background-image: url('{{ banner1_1x | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}'); background-image: image-set(url('{{ banner1_1x | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}') 1x, url('{{ banner1_2x | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}') 2x);"
-                  role="img"
-                  aria-label="{{ marketing_banner_video_1.alt | escape }}"
+                  {% if marketing_banner_video_1.alt != blank %}role="img" aria-label="{{ marketing_banner_video_1.alt | escape }}"{% endif %}
                 >
               {%- endif -%}
               <img
@@ -439,7 +437,7 @@
                     {{- marketing_banner_1_link_text -}}
                   </a>
                 {% elsif marketing_banner_1_link_text != blank %}
-                  <div class="sub-text" aria-label="{{marketing_banner_1_link_text}}">
+                  <div class="sub-text">
                     {{ marketing_banner_1_link_text }}
                   </div>
                 {% endif %}
@@ -571,8 +569,7 @@
                     href="{{ marketing_banner_2_link }}"
                     class="list-bnrimg"
                     style="background-image: url('{{ banner2_1x }}'); background-image: image-set(url('{{ banner2_1x }}') 1x, url('{{ banner2_2x }}') 2x);"
-                    role="img"
-                    aria-label="{{ marketing_banner_video_2.alt | escape }}"
+                    {% if marketing_banner_video_2.alt != blank %}aria-label="{{ marketing_banner_video_2.alt | escape }}"{% endif %}
                   >
               {% else %}
                 {%- assign banner2_1x = marketing_banner_video_2 | image_url: width: 800 -%}
@@ -580,8 +577,7 @@
                 <div
                   class="list-bnrimg"
                   style="background-image: url('{{ banner2_1x | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}'); background-image: image-set(url('{{ banner2_1x | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}') 1x, url('{{ banner2_2x | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}') 2x);"
-                  role="img"
-                  aria-label="{{ marketing_banner_video_2.alt | escape }}"
+                  {% if marketing_banner_video_2.alt != blank %}role="img" aria-label="{{ marketing_banner_video_2.alt | escape }}"{% endif %}
                 >
               {%- endif -%}
               <img
@@ -618,7 +614,7 @@
                     {{- marketing_banner_2_link_text -}}
                   </a>
                 {% elsif marketing_banner_2_link_text != blank %}
-                  <div class="sub-text" aria-label="{{marketing_banner_2_link_text}}">
+                  <div class="sub-text">
                     {{ marketing_banner_2_link_text }}
                   </div>
                 {% endif %}

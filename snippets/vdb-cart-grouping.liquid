@@ -558,7 +558,7 @@
 </script>
 
 {% if request.page_type == 'cart' %}
-  <textarea id="cart_json">{{ cart | json }}</textarea>
+  <textarea id="cart_json" aria-hidden="true" tabindex="-1">{{ cart | json }}</textarea>
   <script>
     let cart_json = document.getElementById('cart_json').value
     let cart_arr = JSON.parse(cart_json);

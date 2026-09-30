@@ -487,7 +487,8 @@
             <span id="variant_value" class="selected_value">Yes</span>
           </div>
           <div class="setting-accordion-content">
-            <div class="radio-wrapper">
+            <fieldset class="radio-wrapper" style="border: none; margin: 0; padding: 0;">
+              <legend class="visually-hidden">Engraving</legend>
               <div class="label-wrapper">
                 <input type="radio" name="engraving" id="no" value="No">
                 <label for="no">No</label>
@@ -496,9 +497,10 @@
                 <input type="radio" name="engraving" id="yes" value="Yes" checked>
                 <label for="yes">Yes ($50.00 USD)</label>
               </div>
-            </div>
+            </fieldset>
             <div class="select-wrapper">
-              <select name="font-style">
+              <label for="font-style" class="visually-hidden">Engraving font</label>
+              <select name="font-style" id="font-style">
                 <option value="garamond" selected>Garamond</option>
                 <option value="helvetica">Helvetica</option>
                 <option value="lucida">Lucida</option>

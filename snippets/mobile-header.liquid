@@ -9,6 +9,31 @@
 {% comment %} Mobile specific CSS {% endcomment %}
 {%- style -%}
   .mobile-menu {
+    visibility: hidden;
+    transition: transform 0.5s ease, visibility 0s linear 0.5s;
+  }
+
+  .mobile-menu__toggle-icon.is-active + .mobile-menu {
+    visibility: visible;
+    transition: transform 0.5s ease, visibility 0s linear 0s;
+  }
+
+  .mobile-menu__submenu.has-mega-menu {
+    visibility: hidden;
+    transition: transform 0.5s ease, visibility 0s linear 0.5s;
+  }
+
+  .mobile-menu__toggle-icon.is-active + .mobile-menu .submenu__input:checked ~ .mobile-menu__submenu.has-mega-menu {
+    visibility: visible;
+    transition: transform 0.5s ease, visibility 0s linear 0s;
+  }
+
+  .mobile-menu .submenu__input:focus-visible + .submenu__label {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .mobile-menu {
     background-color: {% if mobile_menu_background_color != 0.0 %}{{ settings.mobile_menu_background_color | color_modify: 'alpha', mobile_menu_opacity }}{% else %}{{ settings.header_background | color_modify: 'alpha', mobile_menu_opacity }}{% endif %};
   }
 
@@ -34,6 +59,11 @@
   <div
     data-show-mobile-menu="false"
     class="mobile-menu__toggle-button mobile-toggle__position--{{ settings.logo_menu_position }}"
+    role="button"
+    tabindex="0"
+    aria-label="{{ 'layout.general.menu' | t | escape }}"
+    aria-controls="mobile-menu"
+    aria-expanded="false"
   ></div>
   <div
     class="
@@ -141,7 +171,7 @@
           {% if settings.cart_action != 'mini_cart' or settings.cart_action != 'drawer' %}
             href="{{ routes.cart_url }}"
           {% endif %}
-           aria-label="Cart"
+           aria-label="View your shopping bag"
         >
           <span class="header-cart__icon">
             {% render 'icon', name: settings.cart_icon, icon_class: 'header__icon' %}

@@ -239,7 +239,7 @@ window.HYBRID_DIAMOND = function () {
                                         <td class="shape">
                                             <textarea id="product-${diamondsArray?.shopify_variant_id}" style="display:none;">${JSON.stringify(diamondsArray)}</textarea>
                                             <div class="shape-icon-container">
-                                                <img src="${svgURL}" onerror="${errorSrc}">
+                                                <img src="${svgURL}" alt="" onerror="${errorSrc}">
                                             </div>
                                             <span>${diamondsArray?.shape}</span>
                                         </td>

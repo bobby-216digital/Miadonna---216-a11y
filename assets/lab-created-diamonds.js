@@ -376,7 +376,7 @@ window.LB_GROWN_DIAMOND = function () {
                             fancyValues =  window.LB_GROWN_DIAMOND.config?.fancyValues.toLowerCase();
                             var fancySvgURL = `https://www.miadonna.com/cdn/shop/t/495/assets/icon-fancy-${fancyValues}.svg`;
                          
-                            fancyHTMLSelected = `<span class="fancy-svg active"><img src="${fancySvgURL}"></span>`;
+                            fancyHTMLSelected = `<span class="fancy-svg active"><img src="${fancySvgURL}" alt="${fancyValues}"></span>`;
                         }
                           updateSelectFilterText({
                                         mainId: ".fancy-filter-selected",
@@ -458,7 +458,7 @@ window.LB_GROWN_DIAMOND = function () {
                                                 shapesvgURL= shapeName
                                                 ? `/apps/vdb-maidonna-inventory-app/public/icons/icon-shape-${window.LB_GROWN_DIAMOND.handleize(shapeName)}-cut.svg`
                                                 : '/apps/vdb-maidonna-inventory-app/images/no-image.png';
-                                                shapesvgURLHTML +=`<span class="shap-svg"> <img src="${shapesvgURL}" /></span>`;  
+                                                shapesvgURLHTML +=`<span class="shap-svg"> <img src="${shapesvgURL}" alt="${shapeName}" /></span>`;
                                                 count++;
                                             }
                                         }
@@ -539,28 +539,27 @@ window.LB_GROWN_DIAMOND = function () {
 
                                 var diamondfilterhtmlList = "";
                                   if(firstshape.length <=0){
-                                  diamondfilterhtmlList += `<button
+                                  diamondfilterhtmlList += `<div role="listitem"><button
                                                         class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                         type="button"
                                                     data-filter="shapes"
-                                                        role="listitem"
 
                                                         aria-label="Filter by shape."
                                                     >
                                                         <span class="filter-label">Shape:</span>
-                                                        
+
                                                         <span class="filter-value">${firstshape}</span>
                                                         <span class="shape-icons" aria-hidden="true">
-                                                          
+
                                                             ${shapesvgURLHTML}
-                                                           
+
                                                         </span>
                                                               <span class="dmd-rightarrow" aria-hidden="true">
                                                         <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                         </svg>
                                                         </span>
-                                                    </button>`;
+                                                    </button></div>`;
                                         }else{
                                             //  diamondfilterhtmlList += `<button
                                             //             class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
@@ -587,33 +586,31 @@ window.LB_GROWN_DIAMOND = function () {
                                             //             </svg>
                                             //             </span>
                                             //         </button>`;
-                                                      diamondfilterhtmlList += `<button
+                                                      diamondfilterhtmlList += `<div role="listitem"><button
                                                         class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                         type="button"
                                                     data-filter="shapes"
-                                                        role="listitem"
                                                         aria-label="Filter by shape. Currently selected:  ${shapeNameLHTMLSelected}"
                                                     >
                                                         <span class="filter-label">Shape:</span>
-                                                        
+
                                                         <span class="shape-icons" aria-hidden="true">
-                                                            
+
                                                             ${shapesvgURLHTMLSelected}
                                                             ${shapesvgURLHTML}
-                                                           
+
                                                         </span>
                                                               <span class="dmd-rightarrow" aria-hidden="true">
                                                         <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                         </svg>
                                                         </span>
-                                                    </button>`;
+                                                    </button></div>`;
                                         }
-                                         diamondfilterhtmlList += `<button
+                                         diamondfilterhtmlList += `<div role="listitem"><button
                                                             class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                             type="button"
                                                             data-filter="carat"
-                                                            role="listitem"
                                                             aria-label="Filter by carat. Range ${sliderCaratValue1} ct - ${sliderCaratValue2} ct"
                                                         >
                                                             <span class="filter-label">Carat:</span>
@@ -623,12 +620,11 @@ window.LB_GROWN_DIAMOND = function () {
                                                                    <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                             </svg>
                                                             </span>
-                                                        </button>`;
-                                             diamondfilterhtmlList += `<button
+                                                        </button></div>`;
+                                             diamondfilterhtmlList += `<div role="listitem"><button
                                                             class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                             type="button"
                                                             data-filter="color"
-                                                            role="listitem"
                                                             aria-label="Filter by color. Selected ${firstColor} ${colorcount}"
                                                         >
                                                                 <span class="filter-label">Color:</span>
@@ -638,12 +634,11 @@ window.LB_GROWN_DIAMOND = function () {
                                                                    <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                                 </svg>
                                                                 </span>
-                                                            </button>`;
-                                           diamondfilterhtmlList += `<button
+                                                            </button></div>`;
+                                           diamondfilterhtmlList += `<div role="listitem"><button
                                                                 class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                                 type="button"
                                                                 data-filter="price"
-                                                                role="listitem"
                                                                 aria-label="Filter by price. Range $${Math.round($slider_price?.value1)?.toLocaleString('en-US')} - $${Math.round($slider_price?.value2)?.toLocaleString('en-US') }"
                                                             >
                                                                 <span class="filter-label">Price:</span>
@@ -653,12 +648,11 @@ window.LB_GROWN_DIAMOND = function () {
                                                                    <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                                 </svg>
                                                                 </span>
-                                                                </button>`;
-                                            diamondfilterhtmlList += `<button
+                                                                </button></div>`;
+                                            diamondfilterhtmlList += `<div role="listitem"><button
                                                                         class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                                         type="button"
                                                                         data-filter="clarity"
-                                                                        role="listitem"
                                                                         aria-label="Filter by clarity. Selected ${firstClarity} ${claritycount} "
                                                                     >
                                                                         <span class="filter-label">Clarity:</span>
@@ -668,12 +662,11 @@ window.LB_GROWN_DIAMOND = function () {
                                                                             <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                                         </svg>
                                                                         </span>
-                                                                    </button>`;
-                                                diamondfilterhtmlList += `<button
+                                                                    </button></div>`;
+                                                diamondfilterhtmlList += `<div role="listitem"><button
                                                                                 class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
                                                                                 type="button"
                                                                                 data-filter="cut"
-                                                                                role="listitem"
                                                                                 aria-label="Filter by cut. Selected ${firstCut} ${cutcount}"
                                                                             >
                                                                                 <span class="filter-label">Cut:</span>
@@ -683,13 +676,12 @@ window.LB_GROWN_DIAMOND = function () {
                                                                                 <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                                             </svg>
                                                                                 </span>
-                                                                            </button>`;
+                                                                            </button></div>`;
 
-                                            diamondfilterhtmlList += `<button
+                                            diamondfilterhtmlList += `<div role="listitem"><button
                                                                         class="filter-pill filter-pill--all vdb-lb-advanced-filter-mobile-view-open"
                                                                         data-id=""
                                                                         type="button"
-                                                                        role="listitem"
                                                                         aria-label="Open all filters"
                                                                     >
                                                                         ALL FILTERS
@@ -698,7 +690,7 @@ window.LB_GROWN_DIAMOND = function () {
                                                                             <path d="M6.64453 5.83594C6.85547 6.04688 6.85547 6.43359 6.64453 6.64453L1.01953 12.2695C0.808594 12.4805 0.421875 12.4805 0.210938 12.2695C0 12.0586 0 11.6719 0.210938 11.4609L5.44922 6.22266L0.210938 1.01953C0 0.808594 0 0.421875 0.210938 0.210938C0.421875 0 0.808594 0 1.01953 0.210938L6.64453 5.83594Z" fill="#731B34"></path>
                                                                         </svg>
                                                                         </span>
-                                                                    </button>`;
+                                                                    </button></div>`;
                                  document.querySelectorAll(".dmd-filter-js").forEach(filter => {
                                      filter.innerHTML = diamondfilterhtmlList   ;
                                 });
@@ -830,7 +822,7 @@ window.LB_GROWN_DIAMOND = function () {
                                             <header>
                                             <h2 id="filter-title">${diamondsArray?.title}</h2>
                                             <button type="close" class="icon-close filter-mobile-view-close dmd-detail-filter-close"
-                                                aria-lable="close Filter">
+                                                aria-label="close Filter">
                                                 <svg width="16" height="16" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M16.6523 17.9551L9.17578 10.4219L1.64258 17.9551C1.30273 18.2949 0.736328 18.2949 0.339844 17.9551C0 17.5586 0 16.9922 0.339844 16.6523L7.87305 9.11914L0.396484 1.64258C0 1.30273 0 0.736328 0.396484 0.339844C0.736328 0 1.30273 0 1.64258 0.339844L9.17578 7.87305L16.6523 0.339844C16.9922 0 17.5586 0 17.9551 0.339844C18.2949 0.736328 18.2949 1.30273 17.9551 1.64258L10.4219 9.11914L17.9551 16.6523C18.2949 16.9922 18.2949 17.5586 17.9551 17.9551C17.5586 18.2949 16.9922 18.2949 16.6523 17.9551Z" fill="#001514"/>
                                                 </svg>

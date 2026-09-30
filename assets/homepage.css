@@ -250,8 +250,15 @@ body .home-mainbanner .video-element .desktop-video{position:absolute;} */
 .marquee .marquee__content {animation: scroll 20s linear infinite; }
 
 /* Pause on hover */
-.marquee--hover-pause:hover .marquee__content {
+.marquee--hover-pause:hover .marquee__content,
+.marquee--hover-pause:focus-within .marquee__content {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee .marquee__content {
+    animation: none;
+  }
 }
 
 @media (max-width: 1199px) {
@@ -469,6 +476,8 @@ body .okeReviews .oke-bodyText {font-size: 16px!important;  line-height: 23px!im
 .miadonna-moments .collection-info__caption .title{font-size:16px; color:#fff;}
 .miadonna-moments .collection-info__caption .line-hover:before{background-color:#fff; width:0%;}
 .miadonna-moments .collection-info__caption:hover .line-hover:before{width:100%;}
+.miadonna-moments .collection-info__caption:focus-visible{opacity: 1;}
+.miadonna-moments .collection-info__caption:focus-visible .line-hover:before{width:100%;}
 @media (min-width: 768px) {
   .miadonna-moments .list-collection__thumbnail:hover .collection-info__caption{opacity: 1;}
   .miadonna-moments .list-collection__thumbnail:hover img {transform: scale(1.05); }

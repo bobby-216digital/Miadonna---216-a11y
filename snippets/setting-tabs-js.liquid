@@ -4955,8 +4955,13 @@ vdb_stone_variant_id
 				productImageSection && (productImageSection.style.display = 'none');
 				var imgTags = customProductImageSection && (Array.from(customProductImageSection.querySelectorAll("img"))) || [];
 				if (imgTags?.length > 0) {
+					const galleryAltBase = {{ product.title | json }} || document.title;
+					const galleryImgs = imgTags.filter(function(img) { return img.closest('.pg-cell'); });
 					imgTags.forEach(function(element, index) {
 						element.setAttribute('src',imageArrayNew[index]);
+						if (element.closest('.pg-cell')) {
+							element.setAttribute('alt', `${galleryAltBase}, image ${galleryImgs.indexOf(element) + 1} of ${galleryImgs.length}`);
+						}
 						if (imageArrayNew[index].includes('-002-') && element.parentNode.parentNode.children.length == 1) {
 							let labelEl = document.createElement('div');
 							labelEl.id = 'my-dynamic-div';

@@ -2663,3 +2663,7 @@ body .product-gallery--background .mage-wishlist-heart__btn svg{width:27px; heig
       display: block !important;
     }
   }
+.setting-accordion-content .input_value:focus-visible + .input_label {
+  outline: 2px solid #001514;
+  outline-offset: -3px;
+}

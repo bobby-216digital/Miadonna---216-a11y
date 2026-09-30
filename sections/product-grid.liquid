@@ -147,7 +147,7 @@
   {% if section.settings.animation != 'none' %}
     data-scroll-class="{{ section.settings.animation }}"
   {% endif %}
-  role="region" aria-labelledby="{{ section.settings.arialabelledby }}"
+  {% if section.settings.arialabelledby != blank %}role="region" aria-labelledby="{{ section.settings.arialabelledby }}"{% endif %}
 >
   {% if section.settings.main_title != blank %}
     <div class="contanier-nw">
@@ -304,7 +304,7 @@
         {% if block.type == 'image_block' %}
           <figure class="one-half column medium-down--one-half giftright-twobox">
             {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link }}" class="img-hover-effect radius-2" aria-label="{{ section.settings.main_title }}" >
+            <a href="{{ block.settings.link }}" class="img-hover-effect radius-2"{% if block.settings.image == blank or block.settings.image_alt == blank %}{% if block.settings.title == blank %} aria-label="{{ section.settings.main_title | escape }}"{% endif %}{% endif %}>
             {% endif %}
               <div class="small-image">
                 {% if block.settings.image != blank %}

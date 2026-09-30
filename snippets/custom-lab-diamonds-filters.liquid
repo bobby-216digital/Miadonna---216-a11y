@@ -85,11 +85,10 @@
         {% assign countshap = 5 %}
     {% endif %} 
     
-      <button
+      <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
    data-filter="shapes"
-    role="listitem"
     aria-label="Filter by shape. Currently selected: Round"
   >
     <span class="filter-label">Shape:</span>
@@ -273,7 +272,7 @@
       <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
    {% when 'Carat' %}
     
     {% assign caratMinParams = '2' %}
@@ -320,19 +319,18 @@
     {% if caratMaxParams == blank %}{% assign caratMaxParams = maxCaratValue %}{% endif %}
 
     {% if caratMinParams !=blank and caratMaxParams!=blank %}
-     <button
+     <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="carat"
-    role="listitem"
-    aria-label="Filter by carat. Range 0.70 to 26.2 carats"
+    aria-label="Filter by carat. Range {{ caratMinParams }} to {{ caratMaxParams }} carats"
   >
     <span class="filter-label">Carat:</span>
     <span class="filter-value">{{caratMinParams }} ct - {{caratMaxParams }} ct</span>
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
   {% endif %}
 
   {% when 'Price' %}
@@ -369,12 +367,11 @@
       {% if priceMinParams == blank %}{% assign priceMinParams = minPriceValue %}{% endif %}
       {% if priceMaxParams == blank %}{% assign priceMaxParams = maxPriceValue %}{% endif %}
     {% if priceMinParams !=blank and priceMaxParams!=blank %}
-    <button
+    <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="price"
-    role="listitem"
-    aria-label="Filter by price. Range $900 to $36,252"
+    aria-label="Filter by price. Range {{ priceMinParams | times: 100 | money }} to {{ priceMaxParams | times: 100 | money }}"
   >
     <span class="filter-label">Price:</span>
      {% assign min_int = priceMinParams | floor %}
@@ -388,7 +385,7 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-    </button>
+    </button></div>
    {% endif %}
 {% when 'Cut' %}
     {% assign cut_values = '' %}
@@ -438,12 +435,11 @@
           {% break %}
         {% endif %}
       {% endfor %}
-    <button
+    <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="cut"
-    role="listitem"
-    aria-label="Filter by cut. Selected Ideal plus one option"
+    aria-label="Filter by cut. Selected {{ cutParamsArrayFirst }}{% if cutParamsArrayFirst != cutParamsArrayLast %} plus {{ cutcount | minus: 1 }} more{% endif %}"
   >
     <span class="filter-label">Cut:</span>
     <span class="filter-value"> {{cutParamsArrayFirst }}
@@ -452,7 +448,7 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
   {% endif %}
   {% when 'Color' %}
     {% assign color_values = block.settings['main_value_color_1'] %}
@@ -498,22 +494,20 @@
             {% break %}
           {% endif %}
         {% endfor %}
-      <button
+    {% if colorcount > 0 %}
+    {% assign  colorcount = colorcount |minus : 1 %}
+    {% assign  colorcount = '+ '| append: colorcount  %}
+    {% assign  colorParamsArraylabel = colorParamsArray|first  %}
+    {% else  %}
+      {% assign  colorcount = ''  %}
+      {% assign  colorParamsArraylabel = colorParamsArray|last  %}
+    {% endif  %}
+      <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="color"
-    role="listitem"
-    aria-label="Filter by color. Selected D plus two options"
+    aria-label="Filter by color. Selected {{ colorParamsArraylabel }}{% if colorParamsArrayFirst != colorParamsArrayLast %} {{ colorcount }} more{% endif %}"
   >
-    {% if colorcount > 0 %}
-    {% assign  colorcount = colorcount |minus : 1 %}   
-    {% assign  colorcount = '+ '| append: colorcount  %}   
-    {% assign  colorParamsArraylabel = colorParamsArray|first  %}   
-    {% else  %}  
-      {% assign  colorcount = ''  %}   
-      {% assign  colorParamsArraylabel = colorParamsArray|last  %}   
-    {% endif  %}  
-     
         <span class="filter-label">Color:</span>
         <span class="filter-value"> {{colorParamsArraylabel }}
 {% if colorParamsArrayFirst != colorParamsArrayLast %}
@@ -521,7 +515,7 @@
         <span class="dmd-rightarrow" aria-hidden="true">
           {% render 'icon-arrowright' %}
         </span>
-    </button>
+    </button></div>
   {% endif %}
   {% when 'Clarity' %}
     {% assign clarity_values = '' %}
@@ -574,12 +568,11 @@
       {% break %}
     {% endif %}
   {% endfor %}
-  <button
+  <div role="listitem"><button
     class="filter-pill vdb-lb-advanced-filter-mobile-view-open"
     type="button"
     data-filter="clarity"
-    role="listitem"
-    aria-label="Filter by clarity. Selected IF plus two options"
+    aria-label="Filter by clarity. Selected {{ clarityParamsArray | first }}{% if clarityParamsArrayFirst != clarityParamsArrayLast %} plus {{ claritycount | minus: 1 }} more{% endif %}"
   >
     <span class="filter-label">Clarity:</span>
     <span class="filter-value">{{clarityParamsArray|first }}
@@ -588,22 +581,21 @@
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
-{% endif  %} 
+  </button></div>
+{% endif  %}
 {% endcase %}
 {% endfor %}
-   <button
+   <div role="listitem"><button
     class="filter-pill filter-pill--all vdb-lb-advanced-filter-mobile-view-open"
     data-id=""
     type="button"
-    role="listitem"
     aria-label="Open all filters"
   >
     ALL FILTERS
     <span class="dmd-rightarrow" aria-hidden="true">
       {% render 'icon-arrowright' %}
     </span>
-  </button>
+  </button></div>
 
 </div>
 
@@ -780,7 +772,9 @@
                                     max="{{ color_value_array | last }}"
                                     value1="{{ colorParamsArray | first }}"
                                     value2="{{ colorParamsArray | last }}"
-                                    data="{{ color_values }}" 
+                                    aria-label1="Minimum color"
+                                    aria-label2="Maximum color"
+                                    data="{{ color_values }}"
                                     marks="true"
                                     marks-count="{{ color_value_array | size }}"
                                     marks-values-count="{{ color_value_array | size }}"
@@ -886,6 +880,8 @@
                                         max="{{ maxCaratValue }}"
                                         value1="{{ caratMinParams }}"
                                         value2="{{ caratMaxParams }}"
+                                        aria-label1="Minimum carat weight"
+                                        aria-label2="Maximum carat weight"
                                         moving-tooltip="true"
                                         moving-tooltip-distance-to-pointer="-30"
                                         moving-tooltip-bg="transparent"
@@ -971,6 +967,8 @@
                                 max="{{ maxPriceValue }}"
                                 value1="{{ priceMinParams }}"
                                 value2="{{ priceMaxParams }}"
+                                aria-label1="Minimum price"
+                                aria-label2="Maximum price"
                                 step="0.01"
                                 moving-tooltip="true"
                                 moving-tooltip-distance-to-pointer="-30"
@@ -1054,7 +1052,9 @@
                                 max="{{ clarity_value_array | last }}"
                                 value1="{{ clarityParamsArray | first }}"
                                 value2="{{ clarityParamsArray | last }}"
-                                data="{{ clarityValues | join: ',' }}" 
+                                aria-label1="Minimum clarity"
+                                aria-label2="Maximum clarity"
+                                data="{{ clarityValues | join: ',' }}"
                                 marks="true"
                                 marks-count="{{ clarity_value_array | size }}"
                                 marks-values-count="{{ clarity_value_array | size }}"
@@ -1127,6 +1127,8 @@
                                 max="{{ cut_value_array | last }}"
                                 value1="{{ cutParamsArray | first }}"
                                 value2="{{ cutParamsArray | last }}"
+                                aria-label1="Minimum cut"
+                                aria-label2="Maximum cut"
                                 data="{{ cut_values | replace_last: ',', '' }}"
                                 marks="true"
                                 marks-count="{{ cut_value_array | size }}"
@@ -1247,6 +1249,8 @@
                                           max="{{ block.settings.main_title_ratio_max }}"
                                           value1="{{ ratioMinParams }}"
                                           value2="{{ ratioMaxParams }}"
+                                          aria-label1="Minimum length to width ratio"
+                                          aria-label2="Maximum length to width ratio"
                                           step="0.01"
                                           moving-tooltip="true"
                                           moving-tooltip-distance-to-pointer="-30"
@@ -1318,6 +1322,8 @@
                                         max="{{ block.settings.main_title_table_max }}"
                                         value1="{{ tableMinParams }}"
                                         value2="{{ tableMaxParams }}"
+                                        aria-label1="Minimum table percentage"
+                                        aria-label2="Maximum table percentage"
                                         step="0.01"
                                         moving-tooltip="true"
                                         moving-tooltip-distance-to-pointer="-30"
@@ -1390,6 +1396,8 @@
                                         max="{{ block.settings.main_title_depth_max }}"
                                         value1="{{ depthMinParams }}"
                                         value2="{{ depthMaxParams }}"
+                                        aria-label1="Minimum depth percentage"
+                                        aria-label2="Maximum depth percentage"
                                         step="0.01"
                                         moving-tooltip="true"
                                         moving-tooltip-distance-to-pointer="-30"

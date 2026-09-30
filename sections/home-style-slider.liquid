@@ -11,7 +11,7 @@
         </a>
       </div>
 
-      <div class="style-slider sl-space slick-cls" aria-label="find your style">
+      <div class="style-slider sl-space slick-cls">
         {% for block in section.blocks %}
           <div class="slide">
             <div class="style-slide-text slide-cls sl-spacebox">
@@ -62,7 +62,7 @@
                   >
                 {% endif %}
 
-                <span id="desc-{{ forloop.index }}" class="sr-only">
+                <span class="sr-only">
                   {{ block.settings.style_name }}
                 </span>
 

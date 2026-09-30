@@ -96,7 +96,8 @@
     "accessibility": {
       "star_review_text": "Review",
       "star_reviews_text": "Reviews",
-      "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars"
+      "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
+      "skip_to_content": "Skip to content"
     },
     "pagination": {
       "previous": "Previous",

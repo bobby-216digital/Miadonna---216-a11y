@@ -1,11 +1,11 @@
 <section class="marquee-wrapper" role="region" aria-label="Featured In">
   <div class="marquee marquee--hover-pause">
     {% for i in (1..2) %}
-      <div class="marquee__content" role="list">
+      <div class="marquee__content" role="list"{% if i > 1 %} aria-hidden="true"{% endif %}>
         {% for block in section.blocks %}
           <div class="marquee-logo" role="listitem">
             {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link }}" target="_blank" rel="noopener">
+              <a href="{{ block.settings.link }}" target="_blank" rel="noopener"{% if i > 1 %} tabindex="-1"{% endif %}>
             {% endif %}
               {% if block.settings.logo != blank %}
                 <img 

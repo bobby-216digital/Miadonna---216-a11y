@@ -1,8 +1,8 @@
-<div class="lab-grown-diamond-page" aria-labelledby="lab-grown-heading">
+<div class="lab-grown-diamond-page">
   <div class="contanier-nw">
     <div class="diamond-page-row">
-      <div class="diamond-pageleft" aria-label="Page navigation">
-        <div class="lab-grown--sidebar_main" aria-label="Section navigation">
+      <div class="diamond-pageleft" role="navigation" aria-label="Page navigation">
+        <div class="lab-grown--sidebar_main" role="navigation" aria-label="Section navigation">
           <ul class="lab-sidebar-list">
             {% for block in section.blocks %}
               <li class="lab-sidebar-list-tem">
@@ -83,9 +83,9 @@
                                     {% comment %} Second Block {% endcomment %}
                                     {% if block.settings.show_custom_grid %}
                                     <div class="custom-grid"  role="list">
-                                        <a href="{{ block.settings.grid_link }}" class="grid-item" role="listitem">
-                                            <img 
-                                            src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.grid_image | image_url: width: 600 }}" 
+                                        <div role="listitem"><a href="{{ block.settings.grid_link }}" class="grid-item">
+                                            <img
+                                            src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.grid_image | image_url: width: 600 }}"
                                             alt="{{ block.settings.grid_title }}"
                                             loading="lazy"
                                             width="{{ block.settings.grid_image.width }}"
@@ -96,11 +96,11 @@
                                             <span class="grid-title">{{ block.settings.grid_title }}</span>
                                         {% endif %}
 
-                                        </a>
+                                        </a></div>
 
-                                        <a href="{{ block.settings.grid_link1 }}" class="grid-item" role="listitem">
-                                            <img 
-                                            src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.grid_image1 | image_url: width: 600 }}" 
+                                        <div role="listitem"><a href="{{ block.settings.grid_link1 }}" class="grid-item">
+                                            <img
+                                            src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.grid_image1 | image_url: width: 600 }}"
                                             alt="{{ block.settings.grid_title1 }}"
                                             loading="lazy"
                                             width="{{ block.settings.grid_image1.width }}"
@@ -111,12 +111,12 @@
                                             <span class="grid-title">{{ block.settings.grid_title1 }}</span>
                                         {% endif %}
 
-                                        </a>
+                                        </a></div>
 
-                                        <a href="{{ block.settings.grid_link2 }}" class="grid-item" role="listitem">
+                                        <div role="listitem"><a href="{{ block.settings.grid_link2 }}" class="grid-item">
 
-                                            <img 
-                                            src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.grid_image2 | image_url: width: 600 }}" 
+                                            <img
+                                            src="{{ settings.speedsize_url_pfx_https -}}{{ block.settings.grid_image2 | image_url: width: 600 }}"
                                             alt="{{ block.settings.grid_title2 }}"
                                             loading="lazy"
                                             width="{{ block.settings.grid_image2.width }}"
@@ -127,7 +127,7 @@
                                             <span class="grid-title">{{ block.settings.grid_title2 }}</span>
                                         {% endif %}
 
-                                        </a>
+                                        </a></div>
                                     </div>
                                 {% endif %}
                                     {% comment %} Third Block {% endcomment %}

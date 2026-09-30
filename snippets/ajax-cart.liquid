@@ -1,7 +1,7 @@
 <div
   id="theme-ajax-cart"
   class="theme-ajax-cart shopify-section {% if context == 'mobile-header' %}jsAjaxCart{% endif %} is-{{ settings.cart_action | replace: '_', '-' }} theme-ajax-cart--header-{{ settings.header_layout }}"
-  data-ajax-cart-{{ settings.cart_action }} role="complementary" aria-label="Shopping Bag Side Panel"
+  data-ajax-cart-{{ settings.cart_action }} {% if settings.cart_action == 'drawer' %}role="dialog" aria-modal="true"{% else %}role="complementary"{% endif %} aria-label="Shopping Bag Side Panel"
 >
   {{ 'ajax-cart.css' | asset_url | stylesheet_tag:preload:true }}
   <noscript>{{ 'ajax-cart.css' | asset_url | stylesheet_tag }}</noscript>
@@ -13,7 +13,7 @@
         <div id="ajax-cart__content" data-ajax-cart-content></div>
       </div>
     {% elsif settings.cart_action == 'drawer' %}
-      <div class="ajax-cart__close-icon" role="button" aria-label="Close Cart Panel" data-ajax-cart-close>
+      <div class="ajax-cart__close-icon" role="button" tabindex="0" aria-label="Close Cart Panel" data-ajax-cart-close>
         {% render 'icon', name: 'x' %}
       </div>
       <div id="ajax-cart__content" data-ajax-cart-content></div>

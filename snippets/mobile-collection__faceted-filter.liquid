@@ -138,13 +138,12 @@
   {% endif %}
 {% endfor %}
 
-<div class="filter__sidebar-container" style="top: 0px;">
+<div class="filter__sidebar-container" style="top: 0px;" id="filter-sidebar" role="dialog" aria-modal="true" aria-labelledby="filter-sidebar-title">
   <div class="filter__sidebar-content">
     <header>
-      <h2>FILTER</h2>
-      <span class="icon-close filter-mobile-view-close">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-           <title>REFINE</title>
+      <h2 id="filter-sidebar-title">FILTER</h2>
+      <span class="icon-close filter-mobile-view-close" role="button" tabindex="0" aria-label="Close filter">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <path opacity="0.5" d="M10.6406 11.2441L6 6.56836L1.32422 11.2441C1.11328 11.4551 0.761719 11.4551 0.515625 11.2441C0.304688 10.998 0.304688 10.6465 0.515625 10.4355L5.19141 5.75977L0.515625 1.11914C0.304688 0.908203 0.304688 0.556641 0.515625 0.310547C0.761719 0.0996094 1.11328 0.0996094 1.32422 0.310547L6 4.98633L10.6406 0.310547C10.8516 0.0996094 11.2031 0.0996094 11.4492 0.310547C11.6602 0.556641 11.6602 0.908203 11.4492 1.11914L6.77344 5.75977L11.4492 10.4355C11.6602 10.6465 11.6602 10.998 11.4492 11.2441C11.2031 11.4551 10.8516 11.4551 10.6406 11.2441Z" fill="#2C2C2C"/>
         </svg>
       </span>
@@ -185,11 +184,11 @@
                 %}
                  {% unless has_valid_handle %} 
               <li id="sort-content" class="filter__list-item filter__list-sort filter__list-open">
-                  <div class="filter__list-label">
+                  <div class="filter__list-label" role="button" tabindex="0" aria-expanded="true">
                     <div class="filter__list-title">
                       <h3>Sort By</h3>
                     </div>
-                    <div class="filter__list-icon" data-li="shapes">
+                    <div class="filter__list-icon" data-li="shapes" aria-hidden="true">
                       <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <title>shapes</title>
                         <path opacity="0.5" d="M4.92871 0.660156C5.1748 0.414062 5.58496 0.414062 5.83105 0.660156L10.2334 5.03516C10.4795 5.30859 10.4795 5.71875 10.2334 5.96484C9.95996 6.23828 9.5498 6.23828 9.30371 5.96484L5.39355 2.05469L1.4834 5.96484C1.20996 6.23828 0.799805 6.23828 0.553711 5.96484C0.280273 5.71875 0.280273 5.30859 0.553711 5.0625L4.92871 0.660156Z" fill="#2C2C2C"/>
@@ -255,11 +254,11 @@
                 </li>
     
                   <li id="style-content" class="filter__list-item filter__list-style">
-                    <div class="filter__list-label">
+                    <div class="filter__list-label" role="button" tabindex="0" aria-expanded="false">
                       <div class="filter__list-title">
                         <h3>Style <span>(1)</span></h3> 
                       </div>
-                      <div class="filter__list-icon" data-li="shapes">
+                      <div class="filter__list-icon" data-li="shapes" aria-hidden="true">
                         <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <title>shapes</title>
                           <path opacity="0.5" d="M4.92871 0.660156C5.1748 0.414062 5.58496 0.414062 5.83105 0.660156L10.2334 5.03516C10.4795 5.30859 10.4795 5.71875 10.2334 5.96484C9.95996 6.23828 9.5498 6.23828 9.30371 5.96484L5.39355 2.05469L1.4834 5.96484C1.20996 6.23828 0.799805 6.23828 0.553711 5.96484C0.280273 5.71875 0.280273 5.30859 0.553711 5.0625L4.92871 0.660156Z" fill="#2C2C2C"></path>
@@ -506,7 +505,7 @@
                     id="{{ downcase_label }}-content"
                     class="filter__list-item filter__list-{{ downcase_label }}{% if filter.label == 'Style' %} hidden{% endif %} {% if downcase_label == 'shape' and has_valid_handle_stone == true %} hidden{% endif %}"
                   >
-                    <div class="filter__list-label">
+                    <div class="filter__list-label" role="button" tabindex="0" aria-expanded="false">
                       <div class="filter__list-title">
                         <h3>
                           {{ filter.label }}
@@ -537,7 +536,7 @@
                           </div>
                         {% endcomment %}
                       </div>
-                      <div class="filter__list-icon" data-li="shapes">
+                      <div class="filter__list-icon" data-li="shapes" aria-hidden="true">
                         <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <title>shapes</title>
                           <path opacity="0.5" d="M4.92871 0.660156C5.1748 0.414062 5.58496 0.414062 5.83105 0.660156L10.2334 5.03516C10.4795 5.30859 10.4795 5.71875 10.2334 5.96484C9.95996 6.23828 9.5498 6.23828 9.30371 5.96484L5.39355 2.05469L1.4834 5.96484C1.20996 6.23828 0.799805 6.23828 0.553711 5.96484C0.280273 5.71875 0.280273 5.30859 0.553711 5.0625L4.92871 0.660156Z" fill="#2C2C2C"/>
@@ -858,6 +857,8 @@
                               >
                                 <tc-range-slider
                                   id="mobile_faceted_price_slider"
+                                  aria-label1="Minimum price"
+                                  aria-label2="Maximum price"
                                   min="{{ lowestProductValue | replace: ',', '' }}"
                                   max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
                                   {% if filter.min_value.value -%}
@@ -1042,8 +1043,8 @@
                 <h3>Ready-To-Ship</h3>
               </div>
               <div class="filter__list-icon">
-                <input type="checkbox" hidden="hidden" id="ready-to-shop"{% if current_tags contains 'Ready To Ship' %} checked{% endif %}>
-                <label class="switch" for="ready-to-shop"></label>
+                <input type="checkbox" class="visually-hidden" id="ready-to-shop"{% if current_tags contains 'Ready To Ship' %} checked{% endif %}>
+                <label class="switch" for="ready-to-shop"><span class="visually-hidden">Ready-To-Ship</span></label>
               </div>
             </div>
           </li>

@@ -709,6 +709,10 @@ async function swatchCollectionSelectedFun(e, type, isBundleProduct = 'No') {
         Array.from(document.querySelectorAll(`.shape-item[data-handle="${handle}"]`)).forEach(e => e.classList.remove('active'));
     }
     _this.classList.add('active');
+    const pressedGroup = type == 'metal' ? `.swatch[data-handle="${handle}"]` : `.shape-item[data-handle="${handle}"]`;
+    Array.from(document.querySelectorAll(pressedGroup)).forEach(el => {
+        if (el.hasAttribute('aria-pressed')) el.setAttribute('aria-pressed', el.classList.contains('active') ? 'true' : 'false');
+    });
     if (type == 'shape' && isBundleProduct == "Yes" && document.querySelector(`.shape-item.active[data-handle="${handle}"]`)) {
         const bundleHandle = document.querySelector(`.shape-item.active[data-handle="${handle}"]`).dataset?.shapeHandle;
         await changeBundleProduct(handle, bundleHandle, isBundleProduct);

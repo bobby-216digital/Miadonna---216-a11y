@@ -154,13 +154,47 @@ window.PXUTheme.jsCollection = {
         $('.filters-section--buttons-mobile-button').next('.filters-section--buttons').removeClass('is-buttons-dropdown-active');
       }
     });
+    const syncFilterSidebar = function() {
+      const $sidebar = $("#filter-sidebar");
+      if (!$sidebar.length) return;
+      const isOpen = $sidebar.hasClass('is-sidebar-active');
+      $(".filters-section--filter-button").attr('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen) {
+        $sidebar.find('.filter-mobile-view-close').trigger('focus');
+      } else if ($.contains($sidebar[0], document.activeElement) || document.activeElement === document.body) {
+        $(".filters-section--filter-button:visible").first().trigger('focus');
+      }
+    };
     $(".filters-section--filter-button").on('click', function(e) {
       $('html').addClass('is-hide-scroll');
       $(".filter__sidebar-container").toggleClass('is-sidebar-active');
+      syncFilterSidebar();
     });
     $(".filter__sidebar-overlay").on('click', function(e) {
       $('html').removeClass('is-hide-scroll');
       $(".filter__sidebar-container").toggleClass('is-sidebar-active');
+      syncFilterSidebar();
+    });
+    $("#filter-sidebar").on('keydown', function(e) {
+      if (!$(this).hasClass('is-sidebar-active')) return;
+      if (e.key === 'Escape') {
+        $(this).find('.filter-mobile-view-close').first().trigger('click');
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const $focusable = $(this).find('a[href], button, input, select, textarea, [tabindex="0"]').filter(':visible').filter(function() {
+        return !this.disabled && $(this).css('visibility') !== 'hidden';
+      });
+      if (!$focusable.length) return;
+      const first = $focusable[0];
+      const last = $focusable[$focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
     // $(".mobile-setting-tabs-buttons .mobile-setting-tab-button").each((_, button) => {
     //   $(button).on('click', function(e) {
@@ -177,9 +211,16 @@ window.PXUTheme.jsCollection = {
     $(".filter-mobile-view-close").on('click', function(e) {
       $('html').removeClass('is-hide-scroll');
       $(".filter__sidebar-container").toggleClass('is-sidebar-active');
+      syncFilterSidebar();
+    });
+    $(".filter__sidebar-container .filter__list-label[aria-expanded]").each(function() {
+      $(this).attr('aria-expanded', $(this).next().is(':visible') ? 'true' : 'false');
     });
     $(".filter__sidebar-container .filter__list-item").each((_, item) => {
       $(item).find('.filter__list-label').on('click', function(e) {
+        if (this.hasAttribute('aria-expanded')) {
+          $(this).attr('aria-expanded', $(this).next().is(':visible') ? 'false' : 'true');
+        }
         // $(".filter__sidebar-container .filter__list-item").each((_, item) => {
         //   $(item).removeClass('filter__list-open');
         // });
